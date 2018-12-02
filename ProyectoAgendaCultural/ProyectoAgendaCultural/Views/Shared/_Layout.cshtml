@@ -1,0 +1,99 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <link href="~/Content/EstiloBarra.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/estilo_galeria.css" rel="stylesheet" type="text/css" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+    <style>
+        .texto_menu {
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        $(function () {
+
+            // elementos de la lista
+            var menues = $(".nav li");
+
+            // manejador de click sobre todos los elementos
+            menues.mouseover(function () {
+                // eliminamos active de todos los elementos
+                menues.removeClass("active");
+                menues.removeClass("texto_menu");
+                // activamos el elemento clicado.
+                $(this).addClass("active");
+                $(this).addClass("texto_menu")
+            });
+
+        });
+
+    </script>
+</head>
+
+<body>
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid" id="mi_menu">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+                        aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <img src="~/Resources/imag_barra/logo2.png" width="130" height="55">
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown"><a href="index_b.html"><strong><span class="glyphicon glyphicon-home" aria-hidden="true"></span>  INICIO</strong></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">ARTES<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Teatro</a></li>
+                            <li><a href="#">Música</a></li>
+                            <li><a href="#">Danza</a></li>
+                            <li><a href="#">Cine</a></li>
+                            <li><a href="#">Literatura</a></li>
+                        </ul>
+                    </li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                           aria-expanded="false">EXPOSICIONES<span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#">Museos</a></li>
+                            <li><a href="#">Pintura</a></li>
+
+                        </ul>
+                    </li>
+                    <li id="menu_festival" class="dropdown"><a href="#">FESTIVALES</a></li>
+                    <li class="dropdown"><a href="#">TALLERES</a></li>
+                    <li class="dropdown"><a href="#">ARTISTAS</a></li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
+    </nav>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

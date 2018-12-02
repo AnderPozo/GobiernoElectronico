@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2036
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProyectoAgendaCultural", "ProyectoAgendaCultural\ProyectoAgendaCultural.csproj", "{EAD48B56-B996-4146-BC4D-7B399EC2FBB1}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EAD48B56-B996-4146-BC4D-7B399EC2FBB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EAD48B56-B996-4146-BC4D-7B399EC2FBB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EAD48B56-B996-4146-BC4D-7B399EC2FBB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EAD48B56-B996-4146-BC4D-7B399EC2FBB1}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DD6B57B0-2CE9-486F-B55D-D34891CFE67A}
+	EndGlobalSection
+EndGlobal
