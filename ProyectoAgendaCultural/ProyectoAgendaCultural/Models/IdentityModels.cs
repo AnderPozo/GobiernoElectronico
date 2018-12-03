@@ -34,6 +34,25 @@ namespace ProyectoAgendaCultural.Models
         public DbSet<Lugar> LugarDb { get; set; }
         public DbSet<Evento> EventoDb { get; set; }
 
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<EventoOrganizador>()
+                .HasKey(eo => new { eo.EventoId, eo.OrganizadorId });
+
+            modelBuilder.Entity<EventoOrganizador>()
+                .HasRequired(eo => eo.Evento)
+                .WithMany(e => e.EventoOrganizadores)
+                .HasForeignKey(eo => eo.EventoId);
+
+            modelBuilder.Entity<EventoOrganizador>()
+                .HasRequired(eo => eo.Organizador)
+                .WithMany(o => o.EventoOrganizadores)
+                .HasForeignKey(eo => eo.OrganizadorId);
+            
+
+        }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

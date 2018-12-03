@@ -59,7 +59,7 @@ namespace ProyectoAgendaCultural.Models
         public Ciudad Ciudad { get; set; }
 
         public virtual ICollection<Lugar> Lugares { get; set; }
-        public virtual ICollection<Organizador> Organizdores { get; set; }
+        public virtual ICollection<Organizador> Organizadores { get; set; }
     }
 
     //-----------------------CATEGORÍA-------------------------------
@@ -138,14 +138,15 @@ namespace ProyectoAgendaCultural.Models
         public int LugarId { get; set; }
         [ForeignKey("LugarId")]
         public Lugar Lugar { get; set; }
-
+        
         //Relacion varios a varios entidad Organizador
+        /*
         public Evento()
         {
             this.Organizadores = new HashSet<Organizador>();
-        }
+        } */
 
-        public virtual ICollection<Organizador> Organizadores { get; set; }
+        public virtual ICollection<EventoOrganizador> EventoOrganizadores { get; set; }
 
     }
 
@@ -176,13 +177,24 @@ namespace ProyectoAgendaCultural.Models
         public string Fax { get; set; }
         [StringLength(70)]
         public string SitioWeb { get; set; }
-
+        /*
         //Relacion varios a varios entidad Evento
         public Organizador()
         {
             this.Eventos = new HashSet<Evento>();
-        }
+        } */
         
-        public virtual ICollection<Evento> Eventos { get; set; }
+        public virtual ICollection<EventoOrganizador> EventoOrganizadores { get; set; }
+    }
+
+    //-----------------------ORGANIZADOREVENTO-------------------------------
+    [Table("EventoOrganizador", Schema = "AgendaCulturalDB")]
+    public class EventoOrganizador
+    {
+        public int EventoId { get; set; }
+        public Evento Evento { get; set; }
+
+        public int OrganizadorId { get; set; }
+        public Organizador Organizador { get; set; }
     }
 }
