@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -33,10 +34,23 @@ namespace ProyectoAgendaCultural.Models
         public DbSet<Categoria> CategoriaDb { get; set; }
         public DbSet<Lugar> LugarDb { get; set; }
         public DbSet<Evento> EventoDb { get; set; }
+        public DbSet<Organizador> Organizadores { get; set; }
+        //public DbSet<EventoOrganizador> EventoOrganizadores { get; set; }
+
+
+        public static ApplicationDbContext Create()
+        {
+            return new ApplicationDbContext();
+        }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+
+            /*
             modelBuilder.Entity<EventoOrganizador>()
                 .HasKey(eo => new { eo.EventoId, eo.OrganizadorId });
 
@@ -48,14 +62,13 @@ namespace ProyectoAgendaCultural.Models
             modelBuilder.Entity<EventoOrganizador>()
                 .HasRequired(eo => eo.Organizador)
                 .WithMany(o => o.EventoOrganizadores)
-                .HasForeignKey(eo => eo.OrganizadorId);
-            
+                .HasForeignKey(eo => eo.OrganizadorId); */
 
+          /*  modelBuilder.Entity<Direccion>()
+            .HasOptional(d => d.Lugares)
+            .WithMany()
+            .WillCascadeOnDelete(false);*/
         }
 
-        public static ApplicationDbContext Create()
-        {
-            return new ApplicationDbContext();
-        }
     }
 }

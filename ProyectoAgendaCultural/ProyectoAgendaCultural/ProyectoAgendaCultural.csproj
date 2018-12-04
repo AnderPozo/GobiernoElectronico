@@ -195,7 +195,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CategoriaController.cs" />
+    <Compile Include="Controllers\CiudadController.cs" />
+    <Compile Include="Controllers\DireccionController.cs" />
+    <Compile Include="Controllers\EventoController.cs" />
+    <Compile Include="Controllers\LugarController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrganizadorController.cs" />
+    <Compile Include="Controllers\ProvinciaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -288,21 +295,6 @@
     <Content Include="js\modernizr.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="js\usowats.js" />
-    <Content Include="Resources\ImagenesEventos\biblioteca_evento.jpeg" />
-    <Content Include="Resources\ImagenesEventos\chicago.jpg" />
-    <Content Include="Resources\ImagenesEventos\event-featured-Gonzalo-Casares-1538870734.jpeg" />
-    <Content Include="Resources\ImagenesEventos\even_networking.jpeg" />
-    <Content Include="Resources\ImagenesEventos\EVR.jpeg" />
-    <Content Include="Resources\ImagenesEventos\festival-del-sur-400x400.png" />
-    <Content Include="Resources\ImagenesEventos\fill2018-kikiriquito-400X400.jpg" />
-    <Content Include="Resources\ImagenesEventos\gira.jpg" />
-    <Content Include="Resources\ImagenesEventos\juana-cordova-400X400.jpg" />
-    <Content Include="Resources\ImagenesEventos\kingman-400X400.jpg" />
-    <Content Include="Resources\ImagenesEventos\la.jpg" />
-    <Content Include="Resources\ImagenesEventos\museo.jpeg" />
-    <Content Include="Resources\ImagenesEventos\ny.jpg" />
-    <Content Include="Resources\ImagenesEventos\oiltherapy-400X400.png" />
-    <Content Include="Resources\ImagenesEventos\piropo-2.png" />
     <Content Include="Resources\imag_barra\favicon.png" />
     <Content Include="Resources\imag_barra\logo2.png" />
     <Content Include="Scripts\bootstrap.js" />
@@ -321,6 +313,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\visualizar_imagen.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -352,9 +345,45 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Evento\Create.cshtml" />
+    <Content Include="Views\Evento\Delete.cshtml" />
+    <Content Include="Views\Evento\Details.cshtml" />
+    <Content Include="Views\Evento\Edit.cshtml" />
+    <Content Include="Views\Evento\Index.cshtml" />
+    <Content Include="Views\Organizador\Create.cshtml" />
+    <Content Include="Views\Organizador\Delete.cshtml" />
+    <Content Include="Views\Organizador\Details.cshtml" />
+    <Content Include="Views\Organizador\Edit.cshtml" />
+    <Content Include="Views\Organizador\Index.cshtml" />
+    <Content Include="Views\Categoria\Create.cshtml" />
+    <Content Include="Views\Categoria\Delete.cshtml" />
+    <Content Include="Views\Categoria\Details.cshtml" />
+    <Content Include="Views\Categoria\Edit.cshtml" />
+    <Content Include="Views\Categoria\Index.cshtml" />
+    <Content Include="Views\Provincia\Create.cshtml" />
+    <Content Include="Views\Provincia\Delete.cshtml" />
+    <Content Include="Views\Provincia\Details.cshtml" />
+    <Content Include="Views\Provincia\Edit.cshtml" />
+    <Content Include="Views\Provincia\Index.cshtml" />
+    <Content Include="Views\Ciudad\Create.cshtml" />
+    <Content Include="Views\Ciudad\Delete.cshtml" />
+    <Content Include="Views\Ciudad\Details.cshtml" />
+    <Content Include="Views\Ciudad\Edit.cshtml" />
+    <Content Include="Views\Ciudad\Index.cshtml" />
+    <Content Include="Views\Direccion\Create.cshtml" />
+    <Content Include="Views\Direccion\Delete.cshtml" />
+    <Content Include="Views\Direccion\Details.cshtml" />
+    <Content Include="Views\Direccion\Edit.cshtml" />
+    <Content Include="Views\Direccion\Index.cshtml" />
+    <Content Include="Views\Lugar\Create.cshtml" />
+    <Content Include="Views\Lugar\Delete.cshtml" />
+    <Content Include="Views\Lugar\Details.cshtml" />
+    <Content Include="Views\Lugar\Edit.cshtml" />
+    <Content Include="Views\Lugar\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Resources\ImagenesEventos\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

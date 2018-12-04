@@ -58,8 +58,9 @@ namespace ProyectoAgendaCultural.Models
         [ForeignKey("CiudadId")]
         public Ciudad Ciudad { get; set; }
 
-        public virtual ICollection<Lugar> Lugares { get; set; }
+        
         public virtual ICollection<Organizador> Organizadores { get; set; }
+        public virtual ICollection<Lugar> Lugares { get; set; }
     }
 
     //-----------------------CATEGORÍA-------------------------------
@@ -140,13 +141,15 @@ namespace ProyectoAgendaCultural.Models
         public Lugar Lugar { get; set; }
         
         //Relacion varios a varios entidad Organizador
-        /*
+        
         public Evento()
         {
             this.Organizadores = new HashSet<Organizador>();
-        } */
+        }
 
-        public virtual ICollection<EventoOrganizador> EventoOrganizadores { get; set; }
+        public virtual ICollection<Organizador> Organizadores { get; set; }
+
+        //public virtual ICollection<EventoOrganizador> EventoOrganizadores { get; set; }
 
     }
 
@@ -163,10 +166,11 @@ namespace ProyectoAgendaCultural.Models
         public string Descripcion { get; set; }
 
         //Foreign key Direccion
+        
         public int DireccionId { get; set; }
         [ForeignKey("DireccionId")]
         public Direccion Direccion { get; set; }
-
+       
         [Required]
         [StringLength(20)]
         public string Telefono { get; set; }
@@ -177,17 +181,20 @@ namespace ProyectoAgendaCultural.Models
         public string Fax { get; set; }
         [StringLength(70)]
         public string SitioWeb { get; set; }
-        /*
+        
         //Relacion varios a varios entidad Evento
         public Organizador()
         {
             this.Eventos = new HashSet<Evento>();
-        } */
+        } 
         
-        public virtual ICollection<EventoOrganizador> EventoOrganizadores { get; set; }
+        public virtual ICollection<Evento> Eventos { get; set; }
+
+        //public virtual ICollection<EventoOrganizador> EventoOrganizadores { get; set; }
     }
 
     //-----------------------ORGANIZADOREVENTO-------------------------------
+    /*
     [Table("EventoOrganizador", Schema = "AgendaCulturalDB")]
     public class EventoOrganizador
     {
@@ -196,5 +203,5 @@ namespace ProyectoAgendaCultural.Models
 
         public int OrganizadorId { get; set; }
         public Organizador Organizador { get; set; }
-    }
+    } */
 }

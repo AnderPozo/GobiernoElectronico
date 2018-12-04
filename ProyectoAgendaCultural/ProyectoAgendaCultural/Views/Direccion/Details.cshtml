@@ -1,0 +1,42 @@
+﻿@model ProyectoAgendaCultural.Models.Direccion
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Direccion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Ciudad.Nombre_ciudad)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ciudad.Nombre_ciudad)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre_direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre_direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Distrito)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Distrito)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
