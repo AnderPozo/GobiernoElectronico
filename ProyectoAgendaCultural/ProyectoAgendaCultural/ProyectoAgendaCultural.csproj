@@ -296,6 +296,7 @@
     <Content Include="js\respond.min.js" />
     <Content Include="js\usowats.js" />
     <Content Include="Resources\imag_barra\favicon.png" />
+    <Content Include="Resources\imag_barra\img_fondo.jpg" />
     <Content Include="Resources\imag_barra\logo2.png" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />

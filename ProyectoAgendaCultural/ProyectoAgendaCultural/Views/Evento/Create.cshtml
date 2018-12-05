@@ -26,8 +26,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
+                
+                <textarea name="Descripcion" id="Descripcion"
+                          rows="5" cols="40"
+                          data-val-required="The Description field is required."
+                          data-val-maxlength-max="5000"
+                          data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'."
+                          data-val="true"></textarea>
                 @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+
             </div>
         </div>
 
