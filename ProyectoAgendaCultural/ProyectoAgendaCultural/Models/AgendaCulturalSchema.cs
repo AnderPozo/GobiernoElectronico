@@ -107,6 +107,9 @@ namespace ProyectoAgendaCultural.Models
         [StringLength(200)]
         [Display(Name = "Información parqueo")]
         public string Informacion_parqueo { get; set; }
+        [Display(Name = "Tipo de lugar")]
+        public string Tipo { get; set; }
+
         //Lista de clase evento
         public virtual ICollection<Evento> Eventos { get; set; }
 
@@ -204,4 +207,68 @@ namespace ProyectoAgendaCultural.Models
         public int OrganizadorId { get; set; }
         public Organizador Organizador { get; set; }
     } */
+
+    [Table("Artista", Schema="AgendaCulturalDB")]
+    public class Artista
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        [StringLength(15)]
+        public string Cedula { get; set; }
+        [Required]
+        [StringLength(60)]
+        public string Nombres { get; set; }
+        [Required]
+        [StringLength(60)]
+        public string Apellidos { get; set; }
+        public int Edad { get; set; }
+
+        //Foreign Key Edad
+        public int DireccionId { get; set; }
+        [ForeignKey("DireccionId")]
+        public Direccion Direccion { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Telefono { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Email { get; set; }
+        [StringLength(50)]
+        public string Imagen { get; set; }
+        [Required]
+        public string Disciplina { get; set; }
+
+    }
+
+    [Table("Participante", Schema = "AgendaCulturalDB")]
+    public class Participante
+    {
+        [Key]
+        public int Id { get; set; }
+        [Required]
+        [StringLength(15)]
+        public string Cedula { get; set; }
+        [Required]
+        [StringLength(60)]
+        public string Nombres { get; set; }
+        [Required]
+        [StringLength(60)]
+        public string Apellidos { get; set; }
+
+        //Foreign Key Edad
+        public int DireccionId { get; set; }
+        [ForeignKey("DireccionId")]
+        public Direccion Direccion { get; set; }
+
+        [Required]
+        [StringLength(20)]
+        public string Telefono { get; set; }
+        [Required]
+        [StringLength(50)]
+        public string Email { get; set; }
+    }
+
+
 }
