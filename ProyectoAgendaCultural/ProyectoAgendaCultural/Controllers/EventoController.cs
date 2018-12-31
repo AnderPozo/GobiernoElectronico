@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoAgendaCultural.Models;
+using ProyectoAgendaCultural.Models.ClasesSP;
 
 namespace ProyectoAgendaCultural.Controllers
 {
@@ -14,12 +15,28 @@ namespace ProyectoAgendaCultural.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private SubirArchivo arc = new SubirArchivo();
+        private SPEventos even = new SPEventos();
+
 
         // GET: Evento
         public ActionResult Index()
         {
             var eventoDb = db.EventoDb.Include(e => e.Categoria).Include(e => e.Lugar);
             return View(eventoDb.ToList());
+        }
+
+        //Vista Principal Index Eventos
+        public ActionResult IndexEventos()
+        {
+            var even = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventosIndex").ToList();
+            return View(even);
+        }
+
+        //Lista todos los eventos
+        public ActionResult ListaEventos()
+        {
+            var ev = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos").ToList();
+            return View(ev);
         }
 
         // GET: Evento/Details/5

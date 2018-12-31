@@ -10,6 +10,8 @@
     @Scripts.Render("~/bundles/modernizr")
     <link href="~/Content/EstiloBarra.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/estilo_galeria.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/mis_estilos.css" rel="stylesheet" type="text/css"/>
+    <link href="~/Content/estilo_artista.css" rel="stylesheet" type="text/css"/>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
     <style>
@@ -79,7 +81,8 @@
                     </li>
                     <li id="menu_festival" class="dropdown"><a href="#">FESTIVALES</a></li>
                     <li class="dropdown"><a href="#">TALLERES</a></li>
-                    <li class="dropdown"><a href="#">ARTISTAS</a></li>
+                    <li class="dropdown"><a href="/Artista/Index">ARTISTAS</a></li>
+                    <li class="dropdown"><a href="#">CALENDARIO</a></li>
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div><!-- /.navbar-collapse -->
@@ -88,9 +91,9 @@
     <div class="container body-content">
         @RenderBody()
         <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
-        </footer>
+    </div>
+    <div class="jumbotron text-center" style="margin-bottom:0">
+        <p>&copy; @DateTime.Now.Year - Mi aplicación ASP.NET</p>
     </div>
 
     @Scripts.Render("~/bundles/jquery")

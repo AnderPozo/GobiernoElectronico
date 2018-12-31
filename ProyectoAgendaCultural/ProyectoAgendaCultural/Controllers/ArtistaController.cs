@@ -10,112 +10,122 @@ using ProyectoAgendaCultural.Models;
 
 namespace ProyectoAgendaCultural.Controllers
 {
-    public class OrganizadorController : Controller
+    public class ArtistaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private SubirArchivo arc = new SubirArchivo();
 
-        // GET: Organizador
+        // GET: Artista
         public ActionResult Index()
         {
-            var organizadorDb = db.OrganizadorDb.Include(o => o.Direccion);
-            return View(organizadorDb.ToList());
+            var artistaDb = db.ArtistaDb.Include(a => a.Direccion);
+            return View(artistaDb.ToList());
         }
 
-        // GET: Organizador/Details/5
+        // GET: Artista/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            Artista artista = db.ArtistaDb.Find(id);
+            if (artista == null)
             {
                 return HttpNotFound();
             }
-            return View(organizador);
+            return View(artista);
         }
 
-        // GET: Organizador/Create
+        // GET: Artista/Create
         public ActionResult Create()
         {
             ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion");
             return View();
         }
 
-        // POST: Organizador/Create
+        // POST: Artista/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,SitioWeb")] Organizador organizador)
+        public ActionResult Create([Bind(Include = "Id,Cedula,Nombres,Apellidos,Edad,DireccionId,Telefono,Email,Imagen,Disciplina")] Artista artista, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && file!=null)
             {
-                db.OrganizadorDb.Add(organizador);
+                //Ruta donde se guardarán las imagenes
+                string ruta = Server.MapPath("~/Resources/ImagenesArtistas/");
+
+                ruta += file.FileName;
+                arc.SubirImagen(ruta, file);
+
+                //Guarda nombre de la imagen en la base de datos
+                artista.Imagen = file.FileName;
+
+                db.ArtistaDb.Add(artista);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", artista.DireccionId);
+            return View(artista);
         }
 
-        // GET: Organizador/Edit/5
+        // GET: Artista/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            Artista artista = db.ArtistaDb.Find(id);
+            if (artista == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", artista.DireccionId);
+            return View(artista);
         }
 
-        // POST: Organizador/Edit/5
+        // POST: Artista/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,SitioWeb")] Organizador organizador)
+        public ActionResult Edit([Bind(Include = "Id,Cedula,Nombres,Apellidos,Edad,DireccionId,Telefono,Email,Imagen,Disciplina")] Artista artista)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(organizador).State = EntityState.Modified;
+                db.Entry(artista).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", artista.DireccionId);
+            return View(artista);
         }
 
-        // GET: Organizador/Delete/5
+        // GET: Artista/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            Artista artista = db.ArtistaDb.Find(id);
+            if (artista == null)
             {
                 return HttpNotFound();
             }
-            return View(organizador);
+            return View(artista);
         }
 
-        // POST: Organizador/Delete/5
+        // POST: Artista/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            db.OrganizadorDb.Remove(organizador);
+            Artista artista = db.ArtistaDb.Find(id);
+            db.ArtistaDb.Remove(artista);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

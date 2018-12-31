@@ -1,0 +1,33 @@
+﻿@model IEnumerable<ProyectoAgendaCultural.Models.Artista>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<br />
+<h2>Index</h2>
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<br />
+<h1>Conoce a nuestros artistas</h1>
+<br />
+<div class="row">
+    @foreach (var item in Model)
+    {
+        <div class="columnaArt">
+            <div class="card">
+                <img src="~/Resources/ImagenesArtistas/@item.Imagen" alt="Jane" style="width:100%">
+                <div class="containerArt">
+                    <h2>@item.Nombres @item.Apellidos</h2>
+                    <p class="titleArt">@item.Disciplina</p>
+                    <p class="titleArt">@item.Telefono</p>
+                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                    <p>@item.Email</p>
+                    <p><button class="buttonArt">Contacto</button></p>
+                </div>
+            </div>
+        </div>
+    }
+</div>

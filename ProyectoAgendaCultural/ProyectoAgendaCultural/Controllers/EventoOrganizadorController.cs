@@ -10,112 +10,116 @@ using ProyectoAgendaCultural.Models;
 
 namespace ProyectoAgendaCultural.Controllers
 {
-    public class OrganizadorController : Controller
+    public class EventoOrganizadorController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Organizador
+        // GET: EventoOrganizador
         public ActionResult Index()
         {
-            var organizadorDb = db.OrganizadorDb.Include(o => o.Direccion);
-            return View(organizadorDb.ToList());
+            var eventoOrganizadorDb = db.EventoOrganizadorDb.Include(e => e.Evento).Include(e => e.Organizador);
+            return View(eventoOrganizadorDb.ToList());
         }
 
-        // GET: Organizador/Details/5
+        // GET: EventoOrganizador/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            EventoOrganizador eventoOrganizador = db.EventoOrganizadorDb.Find(id);
+            if (eventoOrganizador == null)
             {
                 return HttpNotFound();
             }
-            return View(organizador);
+            return View(eventoOrganizador);
         }
 
-        // GET: Organizador/Create
+        // GET: EventoOrganizador/Create
         public ActionResult Create()
         {
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion");
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre");
+            ViewBag.OrganizadorId = new SelectList(db.OrganizadorDb, "Id", "Nombre");
             return View();
         }
 
-        // POST: Organizador/Create
+        // POST: EventoOrganizador/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,SitioWeb")] Organizador organizador)
+        public ActionResult Create([Bind(Include = "Id,EventoId,OrganizadorId")] EventoOrganizador eventoOrganizador)
         {
             if (ModelState.IsValid)
             {
-                db.OrganizadorDb.Add(organizador);
+                db.EventoOrganizadorDb.Add(eventoOrganizador);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", eventoOrganizador.EventoId);
+            ViewBag.OrganizadorId = new SelectList(db.OrganizadorDb, "Id", "Nombre", eventoOrganizador.OrganizadorId);
+            return View(eventoOrganizador);
         }
 
-        // GET: Organizador/Edit/5
+        // GET: EventoOrganizador/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            EventoOrganizador eventoOrganizador = db.EventoOrganizadorDb.Find(id);
+            if (eventoOrganizador == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", eventoOrganizador.EventoId);
+            ViewBag.OrganizadorId = new SelectList(db.OrganizadorDb, "Id", "Nombre", eventoOrganizador.OrganizadorId);
+            return View(eventoOrganizador);
         }
 
-        // POST: Organizador/Edit/5
+        // POST: EventoOrganizador/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,SitioWeb")] Organizador organizador)
+        public ActionResult Edit([Bind(Include = "Id,EventoId,OrganizadorId")] EventoOrganizador eventoOrganizador)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(organizador).State = EntityState.Modified;
+                db.Entry(eventoOrganizador).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", eventoOrganizador.EventoId);
+            ViewBag.OrganizadorId = new SelectList(db.OrganizadorDb, "Id", "Nombre", eventoOrganizador.OrganizadorId);
+            return View(eventoOrganizador);
         }
 
-        // GET: Organizador/Delete/5
+        // GET: EventoOrganizador/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            EventoOrganizador eventoOrganizador = db.EventoOrganizadorDb.Find(id);
+            if (eventoOrganizador == null)
             {
                 return HttpNotFound();
             }
-            return View(organizador);
+            return View(eventoOrganizador);
         }
 
-        // POST: Organizador/Delete/5
+        // POST: EventoOrganizador/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            db.OrganizadorDb.Remove(organizador);
+            EventoOrganizador eventoOrganizador = db.EventoOrganizadorDb.Find(id);
+            db.EventoOrganizadorDb.Remove(eventoOrganizador);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

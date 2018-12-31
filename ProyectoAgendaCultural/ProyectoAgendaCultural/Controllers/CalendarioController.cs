@@ -10,112 +10,112 @@ using ProyectoAgendaCultural.Models;
 
 namespace ProyectoAgendaCultural.Controllers
 {
-    public class OrganizadorController : Controller
+    public class CalendarioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Organizador
+        // GET: Calendario
         public ActionResult Index()
         {
-            var organizadorDb = db.OrganizadorDb.Include(o => o.Direccion);
-            return View(organizadorDb.ToList());
+            var calendarioDb = db.CalendarioDb.Include(c => c.Evento);
+            return View(calendarioDb.ToList());
         }
 
-        // GET: Organizador/Details/5
+        // GET: Calendario/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            Calendario calendario = db.CalendarioDb.Find(id);
+            if (calendario == null)
             {
                 return HttpNotFound();
             }
-            return View(organizador);
+            return View(calendario);
         }
 
-        // GET: Organizador/Create
+        // GET: Calendario/Create
         public ActionResult Create()
         {
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion");
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre");
             return View();
         }
 
-        // POST: Organizador/Create
+        // POST: Calendario/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,SitioWeb")] Organizador organizador)
+        public ActionResult Create([Bind(Include = "Id,EventoId,Fecha,Hora_inicio,Hora_final")] Calendario calendario)
         {
             if (ModelState.IsValid)
             {
-                db.OrganizadorDb.Add(organizador);
+                db.CalendarioDb.Add(calendario);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", calendario.EventoId);
+            return View(calendario);
         }
 
-        // GET: Organizador/Edit/5
+        // GET: Calendario/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            Calendario calendario = db.CalendarioDb.Find(id);
+            if (calendario == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", calendario.EventoId);
+            return View(calendario);
         }
 
-        // POST: Organizador/Edit/5
+        // POST: Calendario/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,SitioWeb")] Organizador organizador)
+        public ActionResult Edit([Bind(Include = "Id,EventoId,Fecha,Hora_inicio,Hora_final")] Calendario calendario)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(organizador).State = EntityState.Modified;
+                db.Entry(calendario).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", organizador.DireccionId);
-            return View(organizador);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", calendario.EventoId);
+            return View(calendario);
         }
 
-        // GET: Organizador/Delete/5
+        // GET: Calendario/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            if (organizador == null)
+            Calendario calendario = db.CalendarioDb.Find(id);
+            if (calendario == null)
             {
                 return HttpNotFound();
             }
-            return View(organizador);
+            return View(calendario);
         }
 
-        // POST: Organizador/Delete/5
+        // POST: Calendario/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Organizador organizador = db.OrganizadorDb.Find(id);
-            db.OrganizadorDb.Remove(organizador);
+            Calendario calendario = db.CalendarioDb.Find(id);
+            db.CalendarioDb.Remove(calendario);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

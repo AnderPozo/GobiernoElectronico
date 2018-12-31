@@ -34,8 +34,13 @@ namespace ProyectoAgendaCultural.Models
         public DbSet<Categoria> CategoriaDb { get; set; }
         public DbSet<Lugar> LugarDb { get; set; }
         public DbSet<Evento> EventoDb { get; set; }
-        public DbSet<Organizador> Organizadores { get; set; }
-        //public DbSet<EventoOrganizador> EventoOrganizadores { get; set; }
+        public DbSet<Organizador> OrganizadorDb { get; set; }
+        public DbSet<EventoOrganizador> EventoOrganizadorDb { get; set; }
+        public DbSet<Artista> ArtistaDb { get; set; }
+        public DbSet<Presentacion> PresentacionDb { get; set; }
+        public DbSet<Participante> ParticipanteDb { get; set; }
+        public DbSet<Calendario> CalendarioDb { get; set; }
+        public DbSet<Asistencia> AsistenciaDb { get; set; }
 
 
         public static ApplicationDbContext Create()
@@ -70,5 +75,6 @@ namespace ProyectoAgendaCultural.Models
             .WillCascadeOnDelete(false);*/
         }
 
+        public System.Data.Entity.DbSet<ProyectoAgendaCultural.Models.ClasesSP.SPEventos> SPEventos { get; set; }
     }
 }
