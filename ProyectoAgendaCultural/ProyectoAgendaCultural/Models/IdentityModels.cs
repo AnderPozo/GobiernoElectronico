@@ -76,5 +76,7 @@ namespace ProyectoAgendaCultural.Models
         }
 
         public System.Data.Entity.DbSet<ProyectoAgendaCultural.Models.ClasesSP.SPEventos> SPEventos { get; set; }
+
+        public System.Data.Entity.DbSet<ProyectoAgendaCultural.Models.ClasesSP.DetallarEvento> DetallarEventoes { get; set; }
     }
 }

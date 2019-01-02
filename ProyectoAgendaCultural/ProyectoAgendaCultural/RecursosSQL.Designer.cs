@@ -63,17 +63,39 @@ namespace ProyectoAgendaCultural {
         /// <summary>
         ///   Busca una cadena traducida similar a USE AgendaCulturalDB;  
         ///GO  
-        ///CREATE PROCEDURE [AgendaCulturalDB].[sp_ListarEventosIndex] 
+        ///CREATE PROCEDURE [AgendaCulturalDB].[sp_DetalleEvento]
+        ///@Id_evento [int] 
         ///AS   
         ///    SET NOCOUNT ON;  
-        ///    SELECT TOP(9) ev.Id as Id_evento,ev.Imagen,ev.Nombre as Nombre_evento,ev.Descripcion,ct.Id, ct.Nombre as Categoria
-        ///	,lg.Id as Id_lugar,lg.Nombre as Nombre_lugar,cl.Fecha as Fecha_evento
+        ///    SELECT ev.Id as Id_evento,ev.Imagen,ev.Nombre as Nombre_evento, ct.Nombre as Categoria
+        ///	,lg.Id as Id_lugar,lg.Nombre as Nombre_lugar,cl.Fecha as Fecha_evento, cl.Hora_inicio, cl.Hora_final
         ///    FROM AgendaCulturalDB.Evento ev
         ///	INNER JOIN AgendaCulturalDB.Categoria ct
         ///	ON ct.Id=ev.CategoriaId
         ///	INNER JOIN AgendaCulturalDB.Lugar lg
         ///	ON ev.LugarId=lg.Id
-        ///	INNER JOIN AgendaCulturalDB.C [resto de la cadena truncado]&quot;;.
+        ///	INNER JOIN Ag [resto de la cadena truncado]&quot;;.
+        /// </summary>
+        internal static string Detalles_sp_Detalles_Eventos {
+            get {
+                return ResourceManager.GetString("Detalles_sp_Detalles_Eventos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a USE AgendaCulturalDB;  
+        ///GO  
+        ///CREATE PROCEDURE [AgendaCulturalDB].[sp_ListarEventosIndex] 
+        ///AS   
+        ///    SET NOCOUNT ON;  
+        ///    SELECT TOP(9) ev.Id as Id_evento,ev.Imagen,ev.Nombre as Nombre_evento
+        ///	,ev.Descripcion as Descripcion,ct.Id as Id_categoria, ct.Nombre as Categoria
+        ///	,lg.Id as Id_lugar,lg.Nombre as Nombre_lugar,cl.Fecha as Fecha_evento
+        ///    FROM AgendaCulturalDB.Evento ev
+        ///	INNER JOIN AgendaCulturalDB.Categoria ct
+        ///	ON ct.Id=ev.CategoriaId
+        ///	INNER JOIN AgendaCulturalDB.Lugar lg
+        ///	ON ev.LugarId=lg. [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string Listar_sp_Index_Eventos {
             get {
@@ -88,18 +110,28 @@ namespace ProyectoAgendaCultural {
         ///AS   
         ///
         ///    SET NOCOUNT ON;  
-        ///    SELECT ev.Id as Id_evento,ev.Imagen,ev.Nombre as Nombre_evento,ev.Descripcion,ct.Id, ct.Nombre as Categoria
+        ///    SELECT ev.Id as Id_evento,ev.Imagen,ev.Nombre as Nombre_evento
+        ///	,ev.Descripcion as Descripcion,ct.Id as Id_categoria, ct.Nombre as Categoria
         ///	,lg.Id as Id_lugar,lg.Nombre as Nombre_lugar,cl.Fecha as Fecha_evento
         ///    FROM AgendaCulturalDB.Evento ev
         ///	INNER JOIN AgendaCulturalDB.Categoria ct
         ///	ON ct.Id=ev.CategoriaId
         ///	INNER JOIN AgendaCulturalDB.Lugar lg
         ///	ON ev.LugarId=lg.Id
-        ///	INNER JOIN AgendaCulturalDB.Calendario  [resto de la cadena truncado]&quot;;.
+        ///	INNER [resto de la cadena truncado]&quot;;.
         /// </summary>
         internal static string Listar_sp_Todos_Eventos {
             get {
                 return ResourceManager.GetString("Listar_sp_Todos_Eventos", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a [AgendaCulturalDB].[sp_DetalleEvento].
+        /// </summary>
+        internal static string sp_DetalleEvento {
+            get {
+                return ResourceManager.GetString("sp_DetalleEvento", resourceCulture);
             }
         }
         

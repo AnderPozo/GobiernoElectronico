@@ -209,14 +209,16 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812302202069_ProcedimientosAlmacenados.cs" />
-    <Compile Include="Migrations\201812302202069_ProcedimientosAlmacenados.Designer.cs">
-      <DependentUpon>201812302202069_ProcedimientosAlmacenados.cs</DependentUpon>
+    <Compile Include="Migrations\201901011813284_StoreProcedures.cs" />
+    <Compile Include="Migrations\201901011813284_StoreProcedures.Designer.cs">
+      <DependentUpon>201901011813284_StoreProcedures.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgendaCulturalSchema.cs" />
+    <Compile Include="Models\ClasesSP\DetallarEvento.cs" />
     <Compile Include="Models\ClasesSP\ListarEventos.cs" />
+    <Compile Include="Models\ClasesSP\ModeloPaginacion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SubirArchivo.cs" />
@@ -227,6 +229,7 @@
       <DependentUpon>RecursosSQL.resx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\IndexEventoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -310,6 +313,7 @@
     <Content Include="js\modernizr.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="js\usowats.js" />
+    <Content Include="Migrations\QueriesSQL\Detalles_sp_Detalles_Eventos.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Index_Eventos.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Todos_Eventos.sql" />
     <Content Include="Resources\imag_barra\favicon.png" />
@@ -416,6 +420,8 @@
     <Content Include="Views\Calendario\Edit.cshtml" />
     <Content Include="Views\Calendario\Index.cshtml" />
     <Content Include="Views\Evento\IndexEventos.cshtml" />
+    <Content Include="Views\Evento\Detalles.cshtml" />
+    <Content Include="Views\Shared\_paginador.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -436,8 +442,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812302202069_ProcedimientosAlmacenados.resx">
-      <DependentUpon>201812302202069_ProcedimientosAlmacenados.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901011813284_StoreProcedures.resx">
+      <DependentUpon>201901011813284_StoreProcedures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursosSQL.resx">
       <Generator>ResXFileCodeGenerator</Generator>

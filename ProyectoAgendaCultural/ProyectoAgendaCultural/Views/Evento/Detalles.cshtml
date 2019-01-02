@@ -1,0 +1,83 @@
+﻿@model ProyectoAgendaCultural.Models.ClasesSP.DetallarEvento
+
+@{
+    ViewBag.Title = "Detalles";
+}
+
+<br />
+<br />
+<h2>Detalles</h2>
+<!-- Contenido cuerpo -->
+<div class="container">
+
+    <div class="row">
+        <div class="col-sm-8">
+            <h2><b>@Model.Nombre_evento</b></h2>
+            <h6><b>Categoría: </b>@Model.Categoria</h6>
+            <div class="text-center">
+                <img src="~/Resources/ImagenesEventos/@Model.Imagen" height="500" width="500">
+            </div>
+            <br>
+            <p style="text-justify:auto ">
+                @Model.Descripcion
+            </p>
+
+            <!--Clearfix de FECHAS Y HORAS-->
+            <div class="clearfix" style="background-color: #00b5e4">
+                <h4 style="font-weight: bold">*<span class="glyphicon glyphicon-calendar"></span>  FECHAS Y HORAS</h4>
+            </div>
+            <h5><b>Fecha: </b>@Html.DisplayFor(model => model.Fecha_evento)</h5>
+            <h5><b>Hora de inicio: </b>@Html.DisplayFor(model => model.Hora_inicio) h</h5>
+            <h5><b>Hora final: </b>@Html.DisplayFor(model => model.Hora_final) h</h5>
+
+            <!--Clearfix de INFORMACION ADICIONAL-->
+            <div class="clearfix" style="background-color: #00b5e4">
+                <h4 style="font-weight: bold"><span class="glyphicon glyphicon-info-sign"></span>   INFORMACIÓN ADICIONAL</h4>
+            </div>
+            @if (Model.Informacion_pago is true)
+            {
+                <h5>Evento gratuito</h5>
+                <p>
+                    @Model.Informacion_adicional
+                </p>
+            }
+            else
+            {
+                <h5>Evento pagado</h5>
+                <p>
+                    @Model.Informacion_adicional
+                </p>
+            }
+
+            <!--Clearfix de LUGAR-->
+            <div class="clearfix" style="background-color: #00b5e4">
+                <h4 style="font-weight:bold"><span class="glyphicon glyphicon-map-marker"></span>   LUGAR</h4>
+            </div>
+            <h5><b>Lugar del evento: </b>@Model.Nombre_lugar</h5>
+            <h5>@Model.Nombre_direccion , @Model.Nombre_ciudad , @Model.Nombre_provincia</h5>
+            <br />
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+
+
+
+        <div class="col-sm-4">
+            <h2>TITLE HEADING</h2>
+            <h5>Title description, Dec 7, 2017</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>Some text..</p>
+            <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+            <br>
+            <h2>TITLE HEADING</h2>
+            <h5>Title description, Sep 2, 2017</h5>
+            <div class="fakeimg">Fake Image</div>
+            <p>Some text..</p>
+            <p>
+                Sunt in culpa qui officia deserunt mollit anim
+                id est laborum consectetur adipiscing elit, sed do
+                eiusmod tempor incididunt ut labore et dolore magna
+                aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+            </p>
+        </div>
+    </div>
+</div>

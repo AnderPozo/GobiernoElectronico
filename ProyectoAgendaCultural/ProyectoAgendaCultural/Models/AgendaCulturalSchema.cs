@@ -136,7 +136,7 @@ namespace ProyectoAgendaCultural.Models
         public string Descripcion { get; set; }
         [Display(Name = "Evento gratuito)")]
         public bool Informacion_pago { get; set; }
-        [StringLength(300)]
+        [StringLength(600)]
         [Display(Name = "Información adicional")]
         public string Informacion_adicional { get; set; }
         [StringLength(100)]

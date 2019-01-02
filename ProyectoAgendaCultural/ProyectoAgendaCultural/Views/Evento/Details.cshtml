@@ -1,74 +1,71 @@
-﻿@model ProyectoAgendaCultural.Models.Evento
+﻿@model ProyectoAgendaCultural.Models.ClasesSP.DetallarEvento
 
-@{
-    ViewBag.Title = "Details";
-}
+    @{
+        ViewBag.Title = "Details";
+    }
 
-<h2>Details</h2>
+    <h2>Details</h2>
+    <!-- Contenido cuerpo -->
+    <div class="container">
 
-<div>
-    <h4>Evento</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Categoria.Nombre)
-        </dt>
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>@Model.Nombre_evento</h2>
+                <h5>Presentado por: Museo cultural</h5>
+                <h5>Lugar: @Model.Nombre_lugar</h5>
+                <div class="text-center">
+                    <img src="~/Resources/ImagenesEventos/@Model.Imagen">
+                </div>
+                <br>
+                <p style="text-justify:auto ">
+                    @Model.Descripcion
+                </p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Categoria.Nombre)
-        </dd>
+                <div class="clearfix" style="background-color: #00b5e4">
+                    <h4 style="font-weight: bold">*<span class="glyphicon glyphicon-calendar"></span>  FECHAS Y HORAS</h4>
+                </div>
+                <h3>Some Links</h3>
+                <p>Lorem ipsum dolor sit ame.</p>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Lugar.Nombre)
-        </dt>
+                <div class="clearfix" style="background-color: #00b5e4">
+                    <h4 style="font-weight: bold"><span class="glyphicon glyphicon-info-sign"></span>   INFORMACIÓN ADICIONAL</h4>
+                </div>
+                <h3>Some Links</h3>
+                <p>Lorem ipsum dolor sit ame.</p>
 
-        <dd>
-            @Html.DisplayFor(model => model.Lugar.Nombre)
-        </dd>
+                <div class="clearfix" style="background-color: #00b5e4">
+                    <h4 class="alinear_texto"><span class="glyphicon glyphicon-map-marker"></span>   LUGAR</h4>
+                </div>
+                <br>
+                <br>
+                <ul class="nav nav-pills nav-stacked">
+                    <li class="active"><a href="#">Link 1</a></li>
+                    <li><a href="#">Link 2</a></li>
+                    <li><a href="#">Link 3</a></li>
+                </ul>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
+                <hr class="hidden-sm hidden-md hidden-lg">
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Informacion_pago)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Informacion_pago)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Informacion_adicional)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Informacion_adicional)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Imagen)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+            <div class="col-sm-4">
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, Dec 7, 2017</h5>
+                <div class="fakeimg">Fake Image</div>
+                <p>Some text..</p>
+                <p>Sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.</p>
+                <br>
+                <h2>TITLE HEADING</h2>
+                <h5>Title description, Sep 2, 2017</h5>
+                <div class="fakeimg">Fake Image</div>
+                <p>Some text..</p>
+                <p>
+                    Sunt in culpa qui officia deserunt mollit anim
+                    id est laborum consectetur adipiscing elit, sed do
+                    eiusmod tempor incididunt ut labore et dolore magna
+                    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco.
+                </p>
+            </div>
+        </div>
+    </div>

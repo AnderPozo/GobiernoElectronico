@@ -47,7 +47,7 @@
                     <!-- Portfolio Gallery Grid -->
                     <div class="content">
                         <img src="~/Resources/ImagenesEventos/@item.Imagen" alt="Bear" style="width:100%">
-                        <h3>@item.Nombre_evento</h3>
+                        <a href="/Evento/Detalles/@item.Id_evento"><h3>@item.Nombre_evento</h3></a>
                         <p>
                             @item.Descripcion
                         </p>
@@ -70,7 +70,7 @@
                             <div class="content">
                                 <img src="~/Resources/ImagenesEventos/@item.Imagen" alt="@item.Nombre_evento" style="width:100%">
                                 <div class="container_texto">
-                                    <h3>@item.Nombre_evento</h3>
+                                    <a href="/Evento/Detalles/@item.Id_evento"><h3>@item.Nombre_evento</h3></a>
                                 </div>
                                 <p>
                                    <b>Fecha: </b> @Html.DisplayFor(modelItem => item.Fecha_evento)
@@ -86,7 +86,9 @@
             </div>
         }
     </div>
+    <br />
+    <br />
     <div class="contenedor_botonEv">
-        <a class="botonEv listar">Todos los eventos</a>
+        <a class="botonEv listar" href="/Evento/ListaEventos">Todos los eventos</a>
     </div>
 </div>
