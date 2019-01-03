@@ -7,13 +7,13 @@ namespace ProyectoAgendaCultural.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class ProcedimientosAlmacenados : IMigrationMetadata
+    public sealed partial class AlterArtista : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(ProcedimientosAlmacenados));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(AlterArtista));
         
         string IMigrationMetadata.Id
         {
-            get { return "201812302202069_ProcedimientosAlmacenados"; }
+            get { return "201901021936548_AlterArtista"; }
         }
         
         string IMigrationMetadata.Source

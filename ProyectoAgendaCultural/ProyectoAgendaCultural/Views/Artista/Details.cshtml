@@ -51,6 +51,22 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Fecha_nacimiento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha_nacimiento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Descripcion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Descripcion)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Telefono)
         </dt>
 
@@ -82,9 +98,75 @@
             @Html.DisplayFor(model => model.Disciplina)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.Facebook)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Facebook)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Twitter)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Twitter)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Instagram)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Instagram)
+        </dd>
+
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            <h2>Sobre mi</h2>
+            <h4>@Model.Nombres @Model.Apellidos</h4>
+            <h5>@Html.DisplayFor(model => model.Fecha_nacimiento)</h5>
+            <h5>@Model.Disciplina</h5>
+            <div>
+                <img src="~/Resources/ImagenesArtistas/@Model.Imagen" height="250" width="358">
+            </div>
+            <p>@Model.Descripcion</p>
+            <br />
+            <h4><b>Mis redes sociales</b></h4>
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href="@Model.Instagram" target="_blank">Instagram</a></li>
+                <li><a href="@Model.Facebook" target="_blank">Facebook</a></li>
+                <li><a href="@Model.Twitter" target="_blank">Twitter</a></li>
+            </ul>
+            <br />
+            <h4><b>Contactos</b></h4>
+            <div>
+                <h5><b>Correo: </b>@Model.Email</h5>
+                <h5><b>Telefono: </b>@Model.Telefono</h5>
+            </div>
+            <br />
+            <h4><b>Otros artistas</b></h4>
+            <div class="row">
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+                <a href=""><img src="~/Resources/ImagenesArtistas/@Model.Imagen" alt="Avatar" class="avatar" title="@Model.Nombres @Model.Apellidos"></a>
+            </div>
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+
+        <div class="col-sm-8">
+           @Html.Partial("_eventosArtista");
+        </div>
+    </div>
+</div>

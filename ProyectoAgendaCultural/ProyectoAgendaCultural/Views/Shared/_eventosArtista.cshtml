@@ -1,0 +1,25 @@
+﻿@model List<ProyectoAgendaCultural.Models.ClasesSP.EventosDeArtista>
+
+    @foreach (var item in Model)
+    {
+
+
+        <div class="row">
+            <h2>@item.Nombre_evento</h2>
+            <h5>Fecha: @Html.DisplayFor(modelItem => item.Fecha_evento)</h5>
+            <div class="pull-right">
+                <img class="pull-right" src="~/Resources/ImagenesEventos/@item.Imagen" width="300" height="300">
+                <p>
+                    @item.Descripcion
+                </p>
+            </div>
+        </div>
+
+        <div>
+            <hr style="border: 1px solid black">
+        </div>
+
+
+
+    }
+

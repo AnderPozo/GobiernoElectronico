@@ -136,7 +136,7 @@ namespace ProyectoAgendaCultural.Models
         public string Descripcion { get; set; }
         [Display(Name = "Evento gratuito)")]
         public bool Informacion_pago { get; set; }
-        [StringLength(300)]
+        [StringLength(600)]
         [Display(Name = "Información adicional")]
         public string Informacion_adicional { get; set; }
         [StringLength(100)]
@@ -242,13 +242,24 @@ namespace ProyectoAgendaCultural.Models
         [Required]
         [StringLength(15)]
         public string Cedula { get; set; }
+
         [Required]
         [StringLength(60)]
         public string Nombres { get; set; }
+
         [Required]
         [StringLength(60)]
         public string Apellidos { get; set; }
+
         public int Edad { get; set; }
+
+        [Display(Name = "Fecha de nacimiento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dddd dd MMM yyyy}", ApplyFormatInEditMode = true)]
+        public DateTime Fecha_nacimiento { get; set; }
+
+        [StringLength(7000)]
+        public string Descripcion { get; set; }
 
         //Foreign Key Edad
         [Display(Name = "Dirección")]

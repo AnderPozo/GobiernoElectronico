@@ -4,6 +4,7 @@
     ViewBag.Title = "Index";
 }
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <br />
 <br />
 <h2>Index</h2>
@@ -20,12 +21,13 @@
             <div class="card">
                 <img src="~/Resources/ImagenesArtistas/@item.Imagen" alt="Jane" style="width:100%">
                 <div class="containerArt">
-                    <h2>@item.Nombres @item.Apellidos</h2>
+                    <h3>@item.Nombres @item.Apellidos</h3>
                     <p class="titleArt">@item.Disciplina</p>
-                    <p class="titleArt">@item.Telefono</p>
-                    <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                     <p>@item.Email</p>
-                    <p><button class="buttonArt">Contacto</button></p>
+                    <a href="@item.Twitter" class="etiquetaA" target="_blank"><i class="fa fa-twitter"></i></a>
+                    <a href="@item.Instagram" class="etiquetaA" target="_blank"><i class="fa fa-instagram"></i></a>
+                    <a href="@item.Facebook" class="etiquetaA" target="_blank"><i class="fa fa-facebook"></i></a>
+                    <p><a class="buttonArt" type="button" href="/Artista/Details/@item.Id">Ver perfil</a></p>
                 </div>
             </div>
         </div>

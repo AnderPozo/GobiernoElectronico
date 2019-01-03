@@ -118,16 +118,46 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Detalles_sp_Detalles_Eventos" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\detalles_sp_detalles_eventos.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Listar_sp_ArtistasTop" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\listar_sp_artistastop.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Listar_sp_Artistas_Evento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\listar_sp_artistas_evento.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Listar_sp_Eventos_de_Artista" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\listar_sp_eventos_de_artista.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Listar_sp_Index_Eventos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>migrations\queriessql\listar_sp_index_eventos.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Listar_sp_Organizadores_Evento" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\listar_sp_organizadores_evento.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Listar_sp_Todos_Eventos" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>migrations\queriessql\listar_sp_todos_eventos.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="sp_ArtistasEvento" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_ArtistasEvento]</value>
+  </data>
+  <data name="sp_DetalleEvento" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_DetalleEvento]</value>
+  </data>
+  <data name="sp_EventosArtista" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_EventosArtista]</value>
+  </data>
+  <data name="sp_ListarArtistas" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_ListarArtistas]</value>
   </data>
   <data name="sp_ListarEventos" xml:space="preserve">
     <value>[AgendaCulturalDB].[sp_ListarEventos]</value>
   </data>
   <data name="sp_ListarEventosIndex" xml:space="preserve">
     <value>[AgendaCulturalDB].[sp_ListarEventosIndex]</value>
+  </data>
+  <data name="sp_OrganizadoresEvento" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_OrganizadoresEvento]</value>
   </data>
 </root>

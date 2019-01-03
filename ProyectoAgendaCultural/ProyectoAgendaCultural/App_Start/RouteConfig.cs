@@ -16,7 +16,7 @@ namespace ProyectoAgendaCultural
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Evento", action = "Index", id = UrlParameter.Optional }
+                defaults: new { controller = "Evento", action = "IndexEventos", id = UrlParameter.Optional }
             );
         }
     }

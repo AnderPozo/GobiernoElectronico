@@ -1,71 +1,78 @@
-﻿@model IEnumerable<ProyectoAgendaCultural.Models.ClasesSP.SPEventos>
+﻿@model ProyectoAgendaCultural.ViewModels.IndexEventoViewModel
 
 @{
     ViewBag.Title = "ListaEventos";
 }
-
+<br />
+<br />
 <h2>ListaEventos</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_evento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre_evento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_organizador)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre_organizador)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_lugar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre_lugar)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_evento)
-        </th>
-        <th></th>
-    </tr>
+<div class="container">
+    <div class="main">
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_evento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Imagen)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre_evento)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_organizador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre_organizador)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id_lugar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nombre_lugar)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Fecha_evento)
-            </td>
-        </tr>
-    }
+        <div class="container">
+            <h1>MONTUFAR CULTURAL</h1>
 
-</table>
+            <hr>
+
+            <h2>EVENTOS AGREGADOS RECIENTEMENTE</h2>
+            <p>Bienvenido a la página oficial de eventos culturales del cantón Montufar</p>
+        </div>
+        <br />
+        @if (Model.SPEventoes.Count() == 0)
+        {
+            <br />
+            <br />
+            <br />
+            <br />
+            <div class="contenedor_botonEv">
+                <img src="~/Resources/imag_barra/Informacion.png" height="100" width="100" />
+                <h2>NO HAY EVENTOS QUE MOSTRAR</h2>
+            </div>
+            <br />
+            <br />
+            <br />
+            <br />
+        }
+        else
+        {
+
+            <div class="fila">
+                @foreach (var item in Model.SPEventoes)
+                {
+
+                    <div class="columna_galeria">
+                        <div class="content">
+                            <img src="~/Resources/ImagenesEventos/@item.Imagen" alt="@item.Nombre_evento" style="width:100%">
+                            <div class="container_texto">
+                                <a href="/Evento/Detalles/@item.Id_evento"><h3>@item.Nombre_evento</h3></a>
+                            </div>
+                            <p>
+                                <b>Fecha: </b> @Html.DisplayFor(modelItem => item.Fecha_evento)
+                            </p>
+                            <p>
+                                <b>Categoría: </b>@item.Categoria
+                            </p>
+
+                            <div class="overlay">
+                                <div class="texto_overlay">
+                                    <a href="/Evento/Detalles/@item.Id_evento" style="color:white">
+                                        <h3>@item.Nombre_evento</h3>
+                                        <h4>@Html.DisplayFor(modelItem => item.Fecha_evento)</h4>
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+    </div>
+</div>
+<br />
+<br />
+@{Html.RenderPartial("_paginador", Model);}

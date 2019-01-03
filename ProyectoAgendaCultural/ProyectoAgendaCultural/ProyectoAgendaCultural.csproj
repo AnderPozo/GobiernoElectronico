@@ -205,18 +205,26 @@
     <Compile Include="Controllers\LugarController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizadorController.cs" />
+    <Compile Include="Controllers\PresentacionController.cs" />
     <Compile Include="Controllers\ProvinciaController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201812302202069_ProcedimientosAlmacenados.cs" />
-    <Compile Include="Migrations\201812302202069_ProcedimientosAlmacenados.Designer.cs">
-      <DependentUpon>201812302202069_ProcedimientosAlmacenados.cs</DependentUpon>
+    <Compile Include="Migrations\201901021936548_AlterArtista.cs" />
+    <Compile Include="Migrations\201901021936548_AlterArtista.Designer.cs">
+      <DependentUpon>201901021936548_AlterArtista.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201901030135439_StoreProcedures2.cs" />
+    <Compile Include="Migrations\201901030135439_StoreProcedures2.Designer.cs">
+      <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgendaCulturalSchema.cs" />
+    <Compile Include="Models\ClasesSP\DetallarEvento.cs" />
+    <Compile Include="Models\ClasesSP\EventosDeArtista.cs" />
     <Compile Include="Models\ClasesSP\ListarEventos.cs" />
+    <Compile Include="Models\ClasesSP\ModeloPaginacion.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SubirArchivo.cs" />
@@ -227,6 +235,7 @@
       <DependentUpon>RecursosSQL.resx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\IndexEventoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
@@ -310,7 +319,12 @@
     <Content Include="js\modernizr.js" />
     <Content Include="js\respond.min.js" />
     <Content Include="js\usowats.js" />
+    <Content Include="Migrations\QueriesSQL\Detalles_sp_Detalles_Eventos.sql" />
+    <Content Include="Migrations\QueriesSQL\Listar_sp_ArtistasTop.sql" />
+    <Content Include="Migrations\QueriesSQL\Listar_sp_Artistas_Evento.sql" />
+    <Content Include="Migrations\QueriesSQL\Listar_sp_Eventos_de_Artista.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Index_Eventos.sql" />
+    <Content Include="Migrations\QueriesSQL\Listar_sp_Organizadores_Evento.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Todos_Eventos.sql" />
     <Content Include="Resources\imag_barra\favicon.png" />
     <Content Include="Resources\imag_barra\img_fondo.jpg" />
@@ -366,9 +380,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Views\Evento\Create.cshtml" />
     <Content Include="Views\Evento\Delete.cshtml" />
-    <Content Include="Views\Evento\Details.cshtml" />
     <Content Include="Views\Evento\Edit.cshtml" />
-    <Content Include="Views\Evento\Index.cshtml" />
     <Content Include="Views\Categoria\Create.cshtml" />
     <Content Include="Views\Categoria\Delete.cshtml" />
     <Content Include="Views\Categoria\Details.cshtml" />
@@ -394,10 +406,6 @@
     <Content Include="Views\Lugar\Details.cshtml" />
     <Content Include="Views\Lugar\Edit.cshtml" />
     <Content Include="Views\Lugar\Index.cshtml" />
-    <Content Include="Views\Artista\Create.cshtml" />
-    <Content Include="Views\Artista\Delete.cshtml" />
-    <Content Include="Views\Artista\Details.cshtml" />
-    <Content Include="Views\Artista\Edit.cshtml" />
     <Content Include="Views\Artista\Index.cshtml" />
     <Content Include="Views\Evento\ListaEventos.cshtml" />
     <Content Include="Views\Organizador\Create.cshtml" />
@@ -416,6 +424,19 @@
     <Content Include="Views\Calendario\Edit.cshtml" />
     <Content Include="Views\Calendario\Index.cshtml" />
     <Content Include="Views\Evento\IndexEventos.cshtml" />
+    <Content Include="Views\Evento\Detalles.cshtml" />
+    <Content Include="Views\Shared\_paginador.cshtml" />
+    <Content Include="Views\Artista\Create.cshtml" />
+    <Content Include="Views\Artista\Edit.cshtml" />
+    <Content Include="Views\Artista\Details.cshtml" />
+    <Content Include="Views\Artista\Delete.cshtml" />
+    <Content Include="Views\Presentacion\Create.cshtml" />
+    <Content Include="Views\Presentacion\Delete.cshtml" />
+    <Content Include="Views\Presentacion\Details.cshtml" />
+    <Content Include="Views\Presentacion\Edit.cshtml" />
+    <Content Include="Views\Presentacion\Index.cshtml" />
+    <Content Include="Views\Shared\_eventosArtista.cshtml" />
+    <Content Include="Views\Artista\EventoArtista.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -436,8 +457,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201812302202069_ProcedimientosAlmacenados.resx">
-      <DependentUpon>201812302202069_ProcedimientosAlmacenados.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201901021936548_AlterArtista.resx">
+      <DependentUpon>201901021936548_AlterArtista.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901030135439_StoreProcedures2.resx">
+      <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursosSQL.resx">
       <Generator>ResXFileCodeGenerator</Generator>

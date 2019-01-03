@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoAgendaCultural.Models;
 using ProyectoAgendaCultural.Models.ClasesSP;
+using ProyectoAgendaCultural.ViewModels;
 
 namespace ProyectoAgendaCultural.Controllers
 {
@@ -16,6 +18,7 @@ namespace ProyectoAgendaCultural.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private SubirArchivo arc = new SubirArchivo();
         private SPEventos even = new SPEventos();
+        private DetallarEvento de = new DetallarEvento();
 
 
         // GET: Evento
@@ -33,10 +36,34 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         //Lista todos los eventos
-        public ActionResult ListaEventos()
+        public ActionResult ListaEventos(int pagina=1)
         {
-            var ev = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos").ToList();
-            return View(ev);
+            var cantRegistrosPagina = 2;
+
+            var ev = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos")
+                .Skip((pagina - 1) * cantRegistrosPagina)
+                .Take(cantRegistrosPagina).ToList();
+            var totalDeRegistros = db.Database
+                .SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos").Count();
+
+            var modelo = new IndexEventoViewModel();
+            modelo.SPEventoes = ev;
+            modelo.PaginaActual = pagina;
+            modelo.TotalRegistros = totalDeRegistros;
+            modelo.RegistrosPorPagina = cantRegistrosPagina;
+
+
+            return View(modelo);
+        }
+
+        //Detallar evento
+        public ActionResult Detalles(int? id)
+        {
+
+            var de = db.Database.SqlQuery<DetallarEvento>("AgendaCulturalDB.sp_DetalleEvento @Id_evento",
+             new SqlParameter("@Id_evento", id)).SingleOrDefault(e => e.Id_evento == id);
+
+            return View(de);
         }
 
         // GET: Evento/Details/5
@@ -46,11 +73,14 @@ namespace ProyectoAgendaCultural.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Evento evento = db.EventoDb.Find(id);
+
             if (evento == null)
             {
                 return HttpNotFound();
             }
+
             return View(evento);
         }
 

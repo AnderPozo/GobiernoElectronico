@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoAgendaCultural.Models;
+using ProyectoAgendaCultural.Models.ClasesSP;
 
 namespace ProyectoAgendaCultural.Controllers
 {
@@ -14,12 +16,23 @@ namespace ProyectoAgendaCultural.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private SubirArchivo arc = new SubirArchivo();
+        private EventosDeArtista evAr = new EventosDeArtista();
 
         // GET: Artista
         public ActionResult Index()
         {
             var artistaDb = db.ArtistaDb.Include(a => a.Direccion);
             return View(artistaDb.ToList());
+        }
+
+        public ActionResult EventoArtista(int? id)
+        {
+            var evAr = db.Database.SqlQuery<EventosDeArtista>("AgendaCulturalDB.sp_EventosArtista @Id_Artista",
+                new SqlParameter("@Id_artista", id)).ToList();
+
+            //ViewBag.MiListado = evAr;
+
+            return View(evAr);
         }
 
         // GET: Artista/Details/5
@@ -29,6 +42,7 @@ namespace ProyectoAgendaCultural.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Artista artista = db.ArtistaDb.Find(id);
             if (artista == null)
             {
@@ -49,9 +63,9 @@ namespace ProyectoAgendaCultural.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Cedula,Nombres,Apellidos,Edad,DireccionId,Telefono,Email,Imagen,Disciplina")] Artista artista, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "Id,Cedula,Nombres,Apellidos,Edad,Fecha_nacimiento,Descripcion,DireccionId,Telefono,Email,Imagen,Disciplina,Facebook,Twitter,Instagram")] Artista artista, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid && file!=null)
+            if (ModelState.IsValid && file != null)
             {
                 //Ruta donde se guardarán las imagenes
                 string ruta = Server.MapPath("~/Resources/ImagenesArtistas/");
@@ -92,7 +106,7 @@ namespace ProyectoAgendaCultural.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Cedula,Nombres,Apellidos,Edad,DireccionId,Telefono,Email,Imagen,Disciplina")] Artista artista)
+        public ActionResult Edit([Bind(Include = "Id,Cedula,Nombres,Apellidos,Edad,Fecha_nacimiento,Descripcion,DireccionId,Telefono,Email,Imagen,Disciplina,Facebook,Twitter,Instagram")] Artista artista)
         {
             if (ModelState.IsValid)
             {
