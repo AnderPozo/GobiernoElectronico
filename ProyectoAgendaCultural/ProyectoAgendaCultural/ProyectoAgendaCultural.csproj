@@ -218,13 +218,20 @@
     <Compile Include="Migrations\201901030135439_StoreProcedures2.Designer.cs">
       <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901032045581_AlterSPArtistasEventos.cs" />
+    <Compile Include="Migrations\201901032045581_AlterSPArtistasEventos.Designer.cs">
+      <DependentUpon>201901032045581_AlterSPArtistasEventos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgendaCulturalSchema.cs" />
+    <Compile Include="Models\ClasesSP\ArtistasDeEvento.cs" />
     <Compile Include="Models\ClasesSP\DetallarEvento.cs" />
     <Compile Include="Models\ClasesSP\EventosDeArtista.cs" />
+    <Compile Include="Models\ClasesSP\ListaArtistasTOP.cs" />
     <Compile Include="Models\ClasesSP\ListarEventos.cs" />
     <Compile Include="Models\ClasesSP\ModeloPaginacion.cs" />
+    <Compile Include="Models\ClasesSP\OrganizadoresDeEvento.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SubirArchivo.cs" />
@@ -235,6 +242,8 @@
       <DependentUpon>RecursosSQL.resx</DependentUpon>
     </Compile>
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ArtistaEventoViewModel.cs" />
+    <Compile Include="ViewModels\EventoPorArtistasViewModel.cs" />
     <Compile Include="ViewModels\IndexEventoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -345,6 +354,8 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\localizacionLugar.js" />
+    <Content Include="Scripts\MainMapa.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\visualizar_imagen.js" />
     <Content Include="Web.config" />
@@ -437,6 +448,9 @@
     <Content Include="Views\Presentacion\Index.cshtml" />
     <Content Include="Views\Shared\_eventosArtista.cshtml" />
     <Content Include="Views\Artista\EventoArtista.cshtml" />
+    <Content Include="Views\Shared\_topArtistas.cshtml" />
+    <Content Include="Views\Shared\_artistasEvento.cshtml" />
+    <Content Include="Views\Shared\_organizadoresEvento.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -462,6 +476,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901030135439_StoreProcedures2.resx">
       <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901032045581_AlterSPArtistasEventos.resx">
+      <DependentUpon>201901032045581_AlterSPArtistasEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursosSQL.resx">
       <Generator>ResXFileCodeGenerator</Generator>

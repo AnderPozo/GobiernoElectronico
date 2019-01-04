@@ -9,6 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using ProyectoAgendaCultural.Models;
 using ProyectoAgendaCultural.Models.ClasesSP;
+using ProyectoAgendaCultural.ViewModels;
 
 namespace ProyectoAgendaCultural.Controllers
 {
@@ -17,6 +18,7 @@ namespace ProyectoAgendaCultural.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         private SubirArchivo arc = new SubirArchivo();
         private EventosDeArtista evAr = new EventosDeArtista();
+        private ListaArtistasTOP artistaT = new ListaArtistasTOP();
 
         // GET: Artista
         public ActionResult Index()
@@ -30,9 +32,17 @@ namespace ProyectoAgendaCultural.Controllers
             var evAr = db.Database.SqlQuery<EventosDeArtista>("AgendaCulturalDB.sp_EventosArtista @Id_Artista",
                 new SqlParameter("@Id_artista", id)).ToList();
 
-            //ViewBag.MiListado = evAr;
+            var artistaT = db.Database.SqlQuery<ListaArtistasTOP>("AgendaCulturalDB.sp_ListarArtistas").ToList();
 
-            return View(evAr);
+
+            var modelo = new ArtistaEventoViewModel();
+            var artistaDb = db.ArtistaDb.Find(id);
+
+            modelo.EventosDeArtistas = evAr;
+            modelo.Artistas = artistaDb;
+            modelo.ListaArtistasTOPs = artistaT;
+            
+            return View(modelo);
         }
 
         // GET: Artista/Details/5

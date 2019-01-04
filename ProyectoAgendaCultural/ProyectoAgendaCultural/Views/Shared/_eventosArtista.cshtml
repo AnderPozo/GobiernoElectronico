@@ -1,25 +1,28 @@
-﻿@model List<ProyectoAgendaCultural.Models.ClasesSP.EventosDeArtista>
-
-    @foreach (var item in Model)
-    {
+﻿@model ProyectoAgendaCultural.Models.Artista
 
 
-        <div class="row">
-            <h2>@item.Nombre_evento</h2>
-            <h5>Fecha: @Html.DisplayFor(modelItem => item.Fecha_evento)</h5>
-            <div class="pull-right">
-                <img class="pull-right" src="~/Resources/ImagenesEventos/@item.Imagen" width="300" height="300">
-                <p>
-                    @item.Descripcion
-                </p>
-            </div>
-        </div>
+<h2>Sobre mi</h2>
+<h4>@Model.Nombres @Model.Apellidos</h4>
+<h5>@Html.DisplayFor(model => model.Fecha_nacimiento)</h5>
+<h5>@Model.Disciplina</h5>
+<div>
+    <img src="~/Resources/ImagenesArtistas/@Model.Imagen" height="250" width="358">
+</div>
+<p>@Model.Descripcion</p>
+<br />
+<h4><b>Mis redes sociales</b></h4>
+<ul class="nav nav-pills nav-stacked">
+    <li class="active"><a href="@Model.Instagram" target="_blank">Instagram</a></li>
+    <li><a href="@Model.Facebook" target="_blank">Facebook</a></li>
+    <li><a href="@Model.Twitter" target="_blank">Twitter</a></li>
+</ul>
+<br />
+<h4><b>Contactos</b></h4>
+<div>
+    <h5><b>Correo: </b>@Model.Email</h5>
+    <h5><b>Teléfono: </b>@Model.Telefono</h5>
+</div>
+<br />
+<h4><b>Otros artistas</b></h4>
 
-        <div>
-            <hr style="border: 1px solid black">
-        </div>
-
-
-
-    }
-
+<hr class="hidden-sm hidden-md hidden-lg">

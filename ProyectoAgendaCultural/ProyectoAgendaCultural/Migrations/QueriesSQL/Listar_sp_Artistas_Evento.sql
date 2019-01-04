@@ -4,7 +4,7 @@ CREATE PROCEDURE [AgendaCulturalDB].[sp_ArtistasEvento]
 @Id_evento [int] 
 AS 
 	SET NOCOUNT ON;
-	SELECT ev.Id as Id_evento,art.Nombres,art.Apellidos,art.Imagen,art.Disciplina
+	SELECT ev.Id as Id_evento,art.Id as Id_Artista,art.Nombres,art.Apellidos,art.Imagen,art.Disciplina
 	FROM AgendaCulturalDB.Evento ev
 	INNER JOIN AgendaCulturalDB.Presentacion pres
 	ON pres.EventoId=ev.Id

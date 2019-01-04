@@ -1,0 +1,6 @@
+﻿@model List<ProyectoAgendaCultural.Models.ClasesSP.OrganizadoresDeEvento>
+
+@foreach (var item in Model)
+{
+    <a href="/Organizador/Details/@item.Id_organizador" style="color: black;"><h5>@item.Nombre_organizador</h5></a>
+}

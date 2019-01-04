@@ -11,6 +11,7 @@ using ProyectoAgendaCultural.Models;
 using ProyectoAgendaCultural.Models.ClasesSP;
 using ProyectoAgendaCultural.ViewModels;
 
+
 namespace ProyectoAgendaCultural.Controllers
 {
     public class EventoController : Controller
@@ -19,6 +20,9 @@ namespace ProyectoAgendaCultural.Controllers
         private SubirArchivo arc = new SubirArchivo();
         private SPEventos even = new SPEventos();
         private DetallarEvento de = new DetallarEvento();
+        private ArtistasDeEvento artEven = new ArtistasDeEvento();
+        private OrganizadoresDeEvento orgEven = new OrganizadoresDeEvento();
+        
 
 
         // GET: Evento
@@ -63,7 +67,19 @@ namespace ProyectoAgendaCultural.Controllers
             var de = db.Database.SqlQuery<DetallarEvento>("AgendaCulturalDB.sp_DetalleEvento @Id_evento",
              new SqlParameter("@Id_evento", id)).SingleOrDefault(e => e.Id_evento == id);
 
-            return View(de);
+            var artEven = db.Database.SqlQuery<ArtistasDeEvento>("AgendaCulturalDB.sp_ArtistasEvento @Id_evento",
+                new SqlParameter("@Id_evento", id)).ToList();
+
+            var orgEven = db.Database.SqlQuery<OrganizadoresDeEvento>("AgendaCulturalDB.sp_OrganizadoresEvento @Id_evento",
+                new SqlParameter("@Id_evento", id)).ToList();
+
+            var mod = new EventoPorArtistasViewModel();
+
+            mod.DetallarEventos = de;
+            mod.ArtistasDeEventos = artEven;
+            mod.OrganizadoresDeEventos = orgEven;
+
+            return View(mod);
         }
 
         // GET: Evento/Details/5

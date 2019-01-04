@@ -1,0 +1,17 @@
+﻿@model List<ProyectoAgendaCultural.Models.ClasesSP.ArtistasDeEvento>
+
+
+@foreach (var item in Model)
+{
+    <div class="row">
+        <div class="text-center">
+            <a href="/Artista/EventoArtista/@item.Id_artista"><img src="~/Resources/ImagenesArtistas/@item.Imagen" title="@item.Nombres @item.Apellidos" height="250" width="350"></a>
+        </div>
+    </div>
+    <div>
+        <hr style="border: 1px solid black">
+    </div>
+
+}
+
+

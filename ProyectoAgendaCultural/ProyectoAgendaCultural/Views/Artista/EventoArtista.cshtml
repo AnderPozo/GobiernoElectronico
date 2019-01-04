@@ -1,57 +1,46 @@
-﻿@model IEnumerable<ProyectoAgendaCultural.Models.ClasesSP.EventosDeArtista>
+﻿@model  ProyectoAgendaCultural.ViewModels.ArtistaEventoViewModel
+
 
 @{
     ViewBag.Title = "EventoArtista";
 }
-
+<br />
+<br />
 <h2>EventoArtista</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id_evento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Imagen)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nombre_evento)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Descripcion)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Fecha_evento)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Id_evento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Imagen)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nombre_evento)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Descripcion)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Fecha_evento)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id_artista }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id_artista }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id_artista })
-        </td>
-    </tr>
-}
+<div class="container">
+    <div class="row">
+        <div class="col-sm-4">
+            @{Html.RenderPartial("_eventosArtista", Model.Artistas);}
+            @{Html.RenderPartial("_topArtistas",Model.ListaArtistasTOPs);}
+        </div>
 
-</table>
+        <div class="col-sm-8">
+
+            @foreach (var item in Model.EventosDeArtistas)
+            {
+                <div class="row">
+                    <h2>@item.Nombre_evento</h2>
+                    <h5>Fecha: @Html.DisplayFor(modelItem => item.Fecha_evento)</h5>
+                    <div class="pull-right">
+                        <img class="pull-right" src="~/Resources/ImagenesEventos/@item.Imagen" width="300" height="300">
+                        <p>
+                            @item.Descripcion
+                        </p>
+                    </div>
+                </div>
+
+                <div>
+                    <hr style="border: 1px solid black">
+                </div>
+
+            }
+        </div>
+
+    </div>
+
+    </div>
