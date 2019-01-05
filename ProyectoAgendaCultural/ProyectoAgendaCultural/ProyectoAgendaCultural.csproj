@@ -210,17 +210,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201901021936548_AlterArtista.cs" />
-    <Compile Include="Migrations\201901021936548_AlterArtista.Designer.cs">
-      <DependentUpon>201901021936548_AlterArtista.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201901030135439_StoreProcedures2.cs" />
     <Compile Include="Migrations\201901030135439_StoreProcedures2.Designer.cs">
       <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201901032045581_AlterSPArtistasEventos.cs" />
-    <Compile Include="Migrations\201901032045581_AlterSPArtistasEventos.Designer.cs">
-      <DependentUpon>201901032045581_AlterSPArtistasEventos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -251,10 +243,12 @@
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\cambios.css" />
     <Content Include="Content\EstiloBarra.css" />
     <Content Include="Content\estilo_artista.css" />
     <Content Include="Content\Estilo_footer.css" />
     <Content Include="Content\estilo_galeria.css" />
+    <Content Include="Content\estilo_menuVertical.css" />
     <Content Include="Content\mis_estilos.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\font-awesome.css" />
@@ -451,6 +445,7 @@
     <Content Include="Views\Shared\_topArtistas.cshtml" />
     <Content Include="Views\Shared\_artistasEvento.cshtml" />
     <Content Include="Views\Shared\_organizadoresEvento.cshtml" />
+    <Content Include="Views\Shared\_menuVertical.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -471,14 +466,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201901021936548_AlterArtista.resx">
-      <DependentUpon>201901021936548_AlterArtista.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201901030135439_StoreProcedures2.resx">
       <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201901032045581_AlterSPArtistasEventos.resx">
-      <DependentUpon>201901032045581_AlterSPArtistasEventos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursosSQL.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -20,7 +20,7 @@
             <h2><b>@Model.DetallarEventos.Nombre_evento</b></h2>
             <h6><b>Categoría: </b>@Model.DetallarEventos.Categoria</h6>
             <div class="text-center">
-                <img src="~/Resources/ImagenesEventos/@Model.DetallarEventos.Imagen" height="500" width="500">
+                <img src="~/Resources/ImagenesEventos/@Model.DetallarEventos.Imagen" height="500" width="500" class="img-responsive">
             </div>
             <br>
             <p style="text-justify:auto ">
@@ -29,7 +29,7 @@
 
             <!--Clearfix de FECHAS Y HORAS-->
             <div class="clearfix" style="background-color: #00b5e4">
-                <h4 style="font-weight: bold">*<span class="glyphicon glyphicon-calendar"></span>  FECHAS Y HORAS</h4>
+                <h4 style="margin-left:15px"><b><span class="glyphicon glyphicon-calendar"></span>  FECHAS Y HORAS</b></h4>
             </div>
             <h5><b>Fecha: </b>@Html.DisplayFor(model => model.DetallarEventos.Fecha_evento)</h5>
             <h5><b>Hora de inicio: </b>@Html.DisplayFor(model => model.DetallarEventos.Hora_inicio) h</h5>
@@ -37,7 +37,7 @@
 
             <!--Clearfix de INFORMACION ADICIONAL-->
             <div class="clearfix" style="background-color: #00b5e4">
-                <h4 style="font-weight: bold"><span class="glyphicon glyphicon-info-sign"></span>   INFORMACIÓN ADICIONAL</h4>
+                <h4 style="margin-left:15px"><b><span class="glyphicon glyphicon-info-sign"></span>   INFORMACIÓN ADICIONAL</b></h4>
             </div>
             @if (Model.DetallarEventos.Informacion_pago is true)
             {
@@ -54,9 +54,9 @@
                 </p>
             }
 
-            <!--Clearfix de organiozadores-->
+            <!--Clearfix de organizadores-->
             <div class="clearfix" style="background-color: #00b5e4">
-                <h4 style="font-weight:bold"><span class="glyphicon glyphicon-book"></span>   ORGANIZADOR</h4>
+                <h4 style="margin-left:15px"><b><span class="glyphicon glyphicon-book"></span>   ORGANIZADOR</b></h4>
             </div>
             <h5><b>Evento organizado por :</b></h5>
             @{Html.RenderPartial("_organizadoresEvento", Model.OrganizadoresDeEventos);}
@@ -64,7 +64,7 @@
 
             <!--Clearfix de LUGAR-->
             <div class="clearfix" style="background-color: #00b5e4">
-                <h4 style="font-weight:bold"><span class="glyphicon glyphicon-map-marker"></span>   LUGAR</h4>
+                <h4 style="margin-left:15px"><b><span class="glyphicon glyphicon-map-marker"></span>   LUGAR</b></h4>
             </div>
             <h5><b>Lugar del evento: </b>@Model.DetallarEventos.Nombre_lugar</h5>
             <h5>@Model.DetallarEventos.Nombre_direccion , @Model.DetallarEventos.Nombre_ciudad , @Model.DetallarEventos.Nombre_provincia</h5>

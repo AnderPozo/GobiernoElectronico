@@ -286,6 +286,11 @@ namespace ProyectoAgendaCultural.Models
         [StringLength(200)]
         public string Instagram { get; set; }
 
+        public string NombreCompleto
+        {
+            get { return string.Format("{0} {1}", this.Nombres, this.Apellidos); }
+        }
+
         public virtual ICollection<Presentacion> Presentaciones { get; set; }
 
     }

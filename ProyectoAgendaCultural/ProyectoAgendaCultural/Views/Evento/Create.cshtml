@@ -30,11 +30,12 @@
             <div class="col-md-10">
                 
                 <textarea name="Descripcion" id="Descripcion"
-                          rows="5" cols="40"
+                          rows="8" cols="40"
                           data-val-required="The Description field is required."
                           data-val-maxlength-max="5000"
                           data-val-maxlength="The field Description must be a string or array type with a maximum length of '5000'."
-                          data-val="true"></textarea>
+                          data-val="true">
+                </textarea>
                 @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
 
             </div>

@@ -39,7 +39,7 @@ namespace ProyectoAgendaCultural.Controllers
         // GET: Presentacion/Create
         public ActionResult Create()
         {
-            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "Cedula");
+            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "NombreCompleto");
             ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre");
             return View();
         }
