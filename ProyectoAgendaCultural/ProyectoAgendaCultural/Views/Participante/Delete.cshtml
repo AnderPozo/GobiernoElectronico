@@ -1,4 +1,4 @@
-﻿@model ProyectoAgendaCultural.Models.Artista
+﻿@model ProyectoAgendaCultural.Models.Participante
 
 @{
     ViewBag.Title = "Delete";
@@ -19,13 +19,20 @@
         <div class="col-sm-9">
             <div class="panel panel-danger">
                 <div class="panel-heading">
-                    <h2 style="color:black">Eliminar perfil artista</h2>
+                    <h2 style="color:black">Eliminar perfil de participante</h2>
                 </div>
                 <div class="panel-body">
                     <h3>Esta seguro de borrar este registro?</h3>
                     <div>
                         <hr />
                         <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Direccion.Nombre_direccion)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Direccion.Nombre_direccion)
+                            </dd>
 
                             <dt>
                                 @Html.DisplayNameFor(model => model.Cedula)
@@ -52,30 +59,6 @@
                             </dd>
 
                             <dt>
-                                @Html.DisplayNameFor(model => model.Edad)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Edad)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Fecha_nacimiento)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Fecha_nacimiento)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Descripcion)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Descripcion)
-                            </dd>
-
-                            <dt>
                                 @Html.DisplayNameFor(model => model.Telefono)
                             </dt>
 
@@ -89,46 +72,6 @@
 
                             <dd>
                                 @Html.DisplayFor(model => model.Email)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Imagen)
-                            </dt>
-
-                            <dd>
-                                <img src="~/Resources/ImagenesArtistas/@Model.Imagen" height="150" width="250" />
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Disciplina)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Disciplina)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Facebook)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Facebook)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Twitter)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Twitter)
-                            </dd>
-
-                            <dt>
-                                @Html.DisplayNameFor(model => model.Instagram)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Instagram)
                             </dd>
 
                         </dl>
@@ -148,4 +91,3 @@
         </div>
     </div>
 </div>
-

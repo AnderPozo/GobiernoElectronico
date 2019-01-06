@@ -4,85 +4,172 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
-
-
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Lugar</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
+<link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--Menu de administrador-->
+            @{Html.RenderPartial("_menuVertical");}
+            <hr class="hidden-sm hidden-md hidden-lg">
         </div>
+        <div class="col-sm-9">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2 style="color:black">Perfil de lugar</h2>
+                </div>
+                <div class="panel-body">
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                    <form method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.DireccionId, "DireccionId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("DireccionId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.DireccionId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="col-md-10">
+                                <h4><b>Información del lugar</b></h4>
+                                <h5>Los campos marcados con (*) son obligatorios</h5>
+                                <hr />
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del lugar (*)" } })
+                                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                    <hr />
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold">Escribe una breve descripción sobre el lugar</p>
+                                    <textarea name="Descripcion" id="Descripcion"
+                                              rows="8" cols="70"
+                                              data-val-required="The Description field is required."
+                                              data-val-maxlength-max="3000"
+                                              data-val-maxlength="The field Description must be a string or array type with a maximum length of '3000'."
+                                              data-val="true"
+                                              class="form-control">
+                                </textarea>
+                                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                                    <hr />
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>IMAGEN</b></h5>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold"> Elige una imagen del lugar (*)</p>
+                                    <p>La imagen debe tener una resolución de (500x350)px</p>
+                                    <input type="file" name="file" id="file" required />
+                                    <br />
+                                    <img id="imgSalida" width="500" height="330" src="" />
+                                    <hr />
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fax, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold">Elige la dirección del lugar o ingresa una nueva</p>
+                                    @Html.DropDownList("DireccionId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.DireccionId, "", new { @class = "text-danger" })
+                                    <br />
+                                    <a class="btn btn-default" href="/Direccion/Create" style="background-color: #00b5e4"><b>Agregar dirección</b></a>
+                                    <br />
+                                    <hr />
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Informacion_parqueo, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Informacion_parqueo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Informacion_parqueo, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>CONTACTOS</b></h5>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control", placeholder = "Número de contacto (*)" } })
+                                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Correo electrónico" } })
+                                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Fax, new { htmlAttributes = new { @class = "form-control", placeholder = "Número de fax (opcional)" } })
+                                    @Html.ValidationMessageFor(model => model.Fax, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>INFORMACIÓN ADICIONAL</b></h5>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.Informacion_parqueo, new { htmlAttributes = new { @class = "form-control", placeholder = "Información sobre el parqueo (*)" } })
+                                    @Html.ValidationMessageFor(model => model.Informacion_parqueo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold">Tipo de lugar</p>
+                                    <select class="form-control" id="Tipo" name="Tipo">
+                                        <option>Auditorio</option>
+                                        <option>Avenida</option>
+                                        <option>Biblioteca</option>
+                                        <option>Centro Cultural</option>
+                                        <option>Centro de Convenciones</option>
+                                        <option>Cine</option>
+                                        <option>Coliseo</option>
+                                        <option>Conservatorio</option>
+                                        <option>Espacio Deportivo</option>
+                                        <option>Galería</option>
+                                        <option>Iglesia</option>
+                                        <option>Librería</option>
+                                        <option>Mirador</option>
+                                        <option>Museo</option>
+                                        <option>Parque</option>
+                                        <option>Parroquia</option>
+                                        <option>Planetario</option>
+                                        <option>Plaza</option>
+                                        <option>Sala de Conciertos</option>
+                                        <option>Teatro</option>
+                                    </select>
+                                    <span class="field-validation-valid text-danger" data-valmsg-for="Tipo" data-valmsg-replace="true"></span>
+                                    @Html.ValidationMessageFor(model => model.Tipo, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="Crear lugar" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
     </div>
-}
+</div>
 
+<script src="~/Scripts/visualizar_imagen.js"></script>
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}

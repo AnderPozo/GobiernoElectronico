@@ -3,30 +3,50 @@
 @{
     ViewBag.Title = "Delete";
 }
-
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Categoria</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Nombre)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+<link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--Menu de administrador-->
+            @{Html.RenderPartial("_menuVertical");}
+            <hr class="hidden-sm hidden-md hidden-lg">
         </div>
-    }
+        <div class="col-sm-9">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    <h2 style="color:black">Eliminar categoría</h2>
+                </div>
+                <div class="panel-body">
+                    <h3>Esta seguro de borrar este registro?</h3>
+                    <div>
+                        <hr />
+                        <dl class="dl-horizontal">
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Nombre)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Nombre)
+                            </dd>
+
+                        </dl>
+
+                        @using (Html.BeginForm())
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="col-md-offset-3 col-md-9">
+                                <input type="submit" value="Borrar" class="btn btn-danger" /> |
+                                @Html.ActionLink("Back to List", "Index")
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -4,56 +4,95 @@
     ViewBag.Title = "Create";
 }
 
-<h2>Create</h2>
+<link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--Menu de administrador-->
+            @{Html.RenderPartial("_menuVertical");}
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+        <div class="col-sm-9">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2 style="color:black">Publicar evento (Fecha y horarios)</h2>
+                </div>
+                <div class="panel-body">
 
-@using (Html.BeginForm()) 
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Calendario</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.EventoId, "EventoId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("EventoId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.EventoId, "", new { @class = "text-danger" })
+
+                    @using (Html.BeginForm())
+                    {
+                        @Html.AntiForgeryToken()
+
+                    <div class="form-horizontal">
+
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                        <div class="col-md-10">
+                            <h4><b>Información de fechas y horarios del evento</b></h4>
+                            <h5>Los campos marcados con (*) son obligatorios</h5>
+                            <hr />
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <p style="font-weight:bold">Elige un evento o crea uno nuevo</p>
+                                @Html.DropDownList("EventoId", null, htmlAttributes: new { @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.EventoId, "", new { @class = "text-danger" })
+                                <br />
+                                <a class="btn btn-default" href="" style="background-color: #00b5e4"><b>Publicar nuevo evento</b></a>
+                                <br />
+                                <hr />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <div class="clearfix" style="background-color: #00b5e4">
+                                    <h5 style="margin-left:10px"><b>FECHA Y HORARIOS</b></h5>
+                                </div>
+                                <br />
+                                <p>Ingresa la fecha y las horas de inicio y finalización del evento (*)</p>
+                                <br />
+                            </div>
+                            <div class="col-md-10">
+                                <p style="font-weight:bold">Fecha del evento (*)</p>
+                                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <p style="font-weight:bold">Hora de inicio del evento (*)</p>
+                                @Html.EditorFor(model => model.Hora_inicio, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Hora_inicio, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-10">
+                                <p style="font-weight:bold">Hora de finalización del evento (*)</p>
+                                @Html.EditorFor(model => model.Hora_final, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Hora_final, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-md-offset-3 col-md-9">
+                                <input type="submit" value="Guardar y continuar" class="btn btn-lg btn-success" />
+                            </div>
+                        </div>
+                    </div>
+                    }
+                    </div>
+                </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Fecha, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Fecha, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Fecha, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Hora_inicio, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Hora_inicio, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Hora_inicio, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Hora_final, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Hora_final, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Hora_final, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+   <div>
+     @Html.ActionLink("Back to List", "Index")
+   </div>

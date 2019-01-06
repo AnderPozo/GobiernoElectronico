@@ -1,4 +1,4 @@
-﻿@model ProyectoAgendaCultural.Models.Lugar
+﻿@model ProyectoAgendaCultural.Models.Participante
 
 @{
     ViewBag.Title = "Details";
@@ -7,7 +7,7 @@
 <h2>Details</h2>
 
 <div>
-    <h4>Lugar</h4>
+    <h4>Participante</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -19,27 +19,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nombre)
+            @Html.DisplayNameFor(model => model.Cedula)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Nombre)
+            @Html.DisplayFor(model => model.Cedula)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Descripcion)
+            @Html.DisplayNameFor(model => model.Nombres)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Descripcion)
+            @Html.DisplayFor(model => model.Nombres)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Imagen)
+            @Html.DisplayNameFor(model => model.Apellidos)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Imagen)
+            @Html.DisplayFor(model => model.Apellidos)
         </dd>
 
         <dt>
@@ -56,30 +56,6 @@
 
         <dd>
             @Html.DisplayFor(model => model.Email)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Fax)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Fax)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Informacion_parqueo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Informacion_parqueo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Tipo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Tipo)
         </dd>
 
     </dl>

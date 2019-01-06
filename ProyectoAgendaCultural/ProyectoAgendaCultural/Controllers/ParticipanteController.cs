@@ -10,116 +10,112 @@ using ProyectoAgendaCultural.Models;
 
 namespace ProyectoAgendaCultural.Controllers
 {
-    public class PresentacionController : Controller
+    public class ParticipanteController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Presentacion
+        // GET: Participante
         public ActionResult Index()
         {
-            var presentacionDb = db.PresentacionDb.Include(p => p.Artista).Include(p => p.Evento);
-            return View(presentacionDb.ToList());
+            var participanteDb = db.ParticipanteDb.Include(p => p.Direccion);
+            return View(participanteDb.ToList());
         }
 
-        // GET: Presentacion/Details/5
+        // GET: Participante/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Presentacion presentacion = db.PresentacionDb.Find(id);
-            if (presentacion == null)
+            Participante participante = db.ParticipanteDb.Find(id);
+            if (participante == null)
             {
                 return HttpNotFound();
             }
-            return View(presentacion);
+            return View(participante);
         }
 
-        // GET: Presentacion/Create
+        // GET: Participante/Create
         public ActionResult Create()
         {
-            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "NombreCompleto");
-            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre");
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion");
             return View();
         }
 
-        // POST: Presentacion/Create
+        // POST: Participante/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ArtistaId,EventoId")] Presentacion presentacion)
+        public ActionResult Create([Bind(Include = "Id,Cedula,Nombres,Apellidos,DireccionId,Telefono,Email")] Participante participante)
         {
             if (ModelState.IsValid)
             {
-                db.PresentacionDb.Add(presentacion);
+                db.ParticipanteDb.Add(participante);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "Cedula", presentacion.ArtistaId);
-            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", presentacion.EventoId);
-            return View(presentacion);
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", participante.DireccionId);
+            return View(participante);
         }
 
-        // GET: Presentacion/Edit/5
+        // GET: Participante/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Presentacion presentacion = db.PresentacionDb.Find(id);
-            if (presentacion == null)
+            Participante participante = db.ParticipanteDb.Find(id);
+            if (participante == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "NombreCompleto", presentacion.ArtistaId);
-            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", presentacion.EventoId);
-            return View(presentacion);
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", participante.DireccionId);
+            return View(participante);
         }
 
-        // POST: Presentacion/Edit/5
+        // POST: Participante/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ArtistaId,EventoId")] Presentacion presentacion)
+        public ActionResult Edit([Bind(Include = "Id,Cedula,Nombres,Apellidos,DireccionId,Telefono,Email")] Participante participante)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(presentacion).State = EntityState.Modified;
+                db.Entry(participante).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "Cedula", presentacion.ArtistaId);
-            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", presentacion.EventoId);
-            return View(presentacion);
+            ViewBag.DireccionId = new SelectList(db.DireccionDb, "Id", "Nombre_direccion", participante.DireccionId);
+            return View(participante);
         }
 
-        // GET: Presentacion/Delete/5
+        // GET: Participante/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Presentacion presentacion = db.PresentacionDb.Find(id);
-            if (presentacion == null)
+            Participante participante = db.ParticipanteDb.Find(id);
+            if (participante == null)
             {
                 return HttpNotFound();
             }
-            return View(presentacion);
+            return View(participante);
         }
 
-        // POST: Presentacion/Delete/5
+        // POST: Participante/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Presentacion presentacion = db.PresentacionDb.Find(id);
-            db.PresentacionDb.Remove(presentacion);
+            Participante participante = db.ParticipanteDb.Find(id);
+            db.ParticipanteDb.Remove(participante);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

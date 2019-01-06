@@ -196,6 +196,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArtistaController.cs" />
+    <Compile Include="Controllers\AsistenciaController.cs" />
     <Compile Include="Controllers\CalendarioController.cs" />
     <Compile Include="Controllers\CategoriaController.cs" />
     <Compile Include="Controllers\CiudadController.cs" />
@@ -205,6 +206,7 @@
     <Compile Include="Controllers\LugarController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\OrganizadorController.cs" />
+    <Compile Include="Controllers\ParticipanteController.cs" />
     <Compile Include="Controllers\PresentacionController.cs" />
     <Compile Include="Controllers\ProvinciaController.cs" />
     <Compile Include="Global.asax.cs">
@@ -406,11 +408,6 @@
     <Content Include="Views\Direccion\Details.cshtml" />
     <Content Include="Views\Direccion\Edit.cshtml" />
     <Content Include="Views\Direccion\Index.cshtml" />
-    <Content Include="Views\Lugar\Create.cshtml" />
-    <Content Include="Views\Lugar\Delete.cshtml" />
-    <Content Include="Views\Lugar\Details.cshtml" />
-    <Content Include="Views\Lugar\Edit.cshtml" />
-    <Content Include="Views\Lugar\Index.cshtml" />
     <Content Include="Views\Artista\Index.cshtml" />
     <Content Include="Views\Evento\ListaEventos.cshtml" />
     <Content Include="Views\Organizador\Create.cshtml" />
@@ -446,11 +443,27 @@
     <Content Include="Views\Shared\_artistasEvento.cshtml" />
     <Content Include="Views\Shared\_organizadoresEvento.cshtml" />
     <Content Include="Views\Shared\_menuVertical.cshtml" />
+    <Content Include="Views\Lugar\Create.cshtml" />
+    <Content Include="Views\Lugar\Delete.cshtml" />
+    <Content Include="Views\Lugar\Details.cshtml" />
+    <Content Include="Views\Lugar\Edit.cshtml" />
+    <Content Include="Views\Lugar\Index.cshtml" />
+    <Content Include="Views\Asistencia\Create.cshtml" />
+    <Content Include="Views\Asistencia\Delete.cshtml" />
+    <Content Include="Views\Asistencia\Details.cshtml" />
+    <Content Include="Views\Asistencia\Edit.cshtml" />
+    <Content Include="Views\Asistencia\Index.cshtml" />
+    <Content Include="Views\Participante\Create.cshtml" />
+    <Content Include="Views\Participante\Delete.cshtml" />
+    <Content Include="Views\Participante\Details.cshtml" />
+    <Content Include="Views\Participante\Edit.cshtml" />
+    <Content Include="Views\Participante\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Resources\ImagenesArtistas\" />
     <Folder Include="Resources\ImagenesEventos\" />
+    <Folder Include="Resources\ImagenesLugares\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

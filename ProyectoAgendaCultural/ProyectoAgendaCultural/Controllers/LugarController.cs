@@ -13,6 +13,7 @@ namespace ProyectoAgendaCultural.Controllers
     public class LugarController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private SubirArchivo arc = new SubirArchivo();
 
         // GET: Lugar
         public ActionResult Index()
@@ -48,10 +49,20 @@ namespace ProyectoAgendaCultural.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,Informacion_parqueo")] Lugar lugar)
+        public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,Imagen,DireccionId,Telefono,Email,Fax,Informacion_parqueo,Tipo")] Lugar lugar, HttpPostedFileBase file)
         {
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && file != null)
             {
+                //Ruta donde se guardarán las imagenes
+                string ruta = Server.MapPath("~/Resources/ImagenesLugares/");
+
+                ruta += file.FileName;
+                arc.SubirImagen(ruta, file);
+
+                //Guarda nombre de la imagen en la base de datos
+                lugar.Imagen = file.FileName;
+
+
                 db.LugarDb.Add(lugar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,7 +93,7 @@ namespace ProyectoAgendaCultural.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,DireccionId,Telefono,Email,Fax,Informacion_parqueo")] Lugar lugar)
+        public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,Imagen,DireccionId,Telefono,Email,Fax,Informacion_parqueo,Tipo")] Lugar lugar)
         {
             if (ModelState.IsValid)
             {

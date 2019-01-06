@@ -1,9 +1,8 @@
-﻿@model ProyectoAgendaCultural.Models.Presentacion
+﻿@model ProyectoAgendaCultural.Models.Asistencia
 
 @{
     ViewBag.Title = "Delete";
 }
-
 <link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
 <br />
 <br />
@@ -19,7 +18,7 @@
         <div class="col-sm-9">
             <div class="panel panel-danger">
                 <div class="panel-heading">
-                    <h2 style="color:black">Eliminar artistas de evento</h2>
+                    <h2 style="color:black">Eliminar asistencia</h2>
                 </div>
                 <div class="panel-body">
                     <h3>Esta seguro de borrar este registro?</h3>
@@ -27,19 +26,19 @@
                         <hr />
                         <dl class="dl-horizontal">
                             <dt>
-                                @Html.DisplayNameFor(model => model.Artista.Cedula)
-                            </dt>
-
-                            <dd>
-                                @Html.DisplayFor(model => model.Artista.Cedula)
-                            </dd>
-
-                            <dt>
                                 @Html.DisplayNameFor(model => model.Evento.Nombre)
                             </dt>
 
                             <dd>
                                 @Html.DisplayFor(model => model.Evento.Nombre)
+                            </dd>
+
+                            <dt>
+                                @Html.DisplayNameFor(model => model.Participante.Cedula)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.Participante.Cedula)
                             </dd>
 
                         </dl>
@@ -59,3 +58,4 @@
         </div>
     </div>
 </div>
+

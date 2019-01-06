@@ -4,87 +4,147 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
-
-
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Evento</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
-            </div>
+<link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--Menu de administrador-->
+            @{Html.RenderPartial("_menuVertical");}
+            <hr class="hidden-sm hidden-md hidden-lg">
         </div>
+        <div class="col-sm-9">
+            <div class="panel panel-warning">
+                <div class="panel-heading">
+                    <h2 style="color:black">Editar evento</h2>
+                </div>
+                <div class="panel-body">
+                    <form method="post" enctype="multipart/form-data">
+                        @Html.AntiForgeryToken()
+                        <div class="col-md-10">
+                            <h4><b>Editar información del evento</b></h4>
+                            <h5>Los campos marcados con (*) son obligatorios</h5>
+                            <hr />
+                        </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Descripcion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Descripcion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
-            </div>
-        </div>
+                        <div class="form-horizontal">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <h6><i>El nombre del evento no puede exceder los 40 caracteres</i></h6>
+                                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control", placeholder = "Nombre del evento (*)" } })
+                                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Informacion_pago, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Informacion_pago)
-                    @Html.ValidationMessageFor(model => model.Informacion_pago, "", new { @class = "text-danger" })
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold">Descripción del evento. Se recomienda de uno a dos párrafos. (*)</p>
+                                    <textarea name="Descripcion" id="Descripcion"
+                                              rows="12" cols="70"
+                                              data-val-required="The Description field is required."
+                                              data-val-maxlength-max="7000"
+                                              data-val-maxlength="The field Description must be a string or array type with a maximum length of '7000'."
+                                              data-val="true"
+                                              class="form-control">@Model.Descripcion
+                                    </textarea>
+                                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>ADMISIÓN/INFORMACIÓN DE PAGO</b></h5>
+                                    </div>
+                                    <br />
+                                    <p style="font-weight:bold">Selecciona si el evento es gratuito o proporciona información adicional de pago</p>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Informacion_pago, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-md-10">
+                                    <div class="checkbox">
+                                        @Html.EditorFor(model => model.Informacion_pago)
+                                        @Html.ValidationMessageFor(model => model.Informacion_pago, "", new { @class = "text-danger" })
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+
+                                <div class="col-md-10">
+                                    <hr />
+                                    <p style="font-weight:bold">Incluya toda la información relevante como costos de ingreso al evento.Ingrese "GRATIS" si el evento es abierto al público</p>
+                                    @Html.EditorFor(model => model.Informacion_adicional, new { htmlAttributes = new { @class = "form-control", placeholder = "Información adicional del evento" } })
+                                    @Html.ValidationMessageFor(model => model.Informacion_adicional, "", new { @class = "text-danger" })
+                                    <hr />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>IMAGEN</b></h5>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold"> Elige una imagen para el evento (*)</p>
+                                    <p>La imagen debe tener una resolución de 900px 900px</p>
+                                    <input type="file" name="file" id="file" required />
+                                    <br />
+                                    <img id="imgSalida" width="500" height="500" src="" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>CATEGORÍA DEL EVENTO</b></h5>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold">Seleccione una categoría para el evento</p>
+                                    @Html.DropDownList("CategoriaId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.CategoriaId, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <div class="clearfix" style="background-color: #00b5e4">
+                                        <h5 style="margin-left:10px"><b>LUGAR DEL EVENTO</b></h5>
+                                    </div>
+                                    <br />
+                                </div>
+                                <div class="col-md-10">
+                                    <p style="font-weight:bold">Seleccione el lugar donde va a ocurrir el evento o agregue un nuevo lugar</p>
+                                    @Html.DropDownList("LugarId", null, htmlAttributes: new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.LugarId, "", new { @class = "text-danger" })
+                                    <hr />
+                                    <a class="btn btn-default" href="/Lugar/Create" style="background-color: #00b5e4"><b>Agregar nuevo lugar</b></a>
+                                    <br />
+                                    <br />
+                                    <hr />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-offset-3 col-md-9">
+                                    <input type="submit" value="Guardar cambios" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Informacion_adicional, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Informacion_adicional, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Informacion_adicional, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Imagen, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Imagen, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Imagen, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.CategoriaId, "CategoriaId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("CategoriaId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.CategoriaId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.LugarId, "LugarId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("LugarId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.LugarId, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
     </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
 
 @section Scripts {
