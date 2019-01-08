@@ -127,6 +127,12 @@
   <data name="Listar_sp_Artistas_Evento" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>migrations\queriessql\listar_sp_artistas_evento.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
+  <data name="Listar_sp_Eventos_Calendario" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\listar_sp_eventos_calendario.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="Listar_sp_Eventos_Categoria" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>migrations\queriessql\listar_sp_eventos_categoria.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
   <data name="Listar_sp_Eventos_de_Artista" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>migrations\queriessql\listar_sp_eventos_de_artista.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
@@ -147,6 +153,12 @@
   </data>
   <data name="sp_EventosArtista" xml:space="preserve">
     <value>[AgendaCulturalDB].[sp_EventosArtista]</value>
+  </data>
+  <data name="sp_EventosCalendario" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_EventosCalendario]</value>
+  </data>
+  <data name="sp_EventosCategoria" xml:space="preserve">
+    <value>[AgendaCulturalDB].[sp_EventosCategoria]</value>
   </data>
   <data name="sp_ListarArtistas" xml:space="preserve">
     <value>[AgendaCulturalDB].[sp_ListarArtistas]</value>

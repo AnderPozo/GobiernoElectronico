@@ -216,12 +216,18 @@
     <Compile Include="Migrations\201901030135439_StoreProcedures2.Designer.cs">
       <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201901071645506_EventosCategoriaCalendario.cs" />
+    <Compile Include="Migrations\201901071645506_EventosCategoriaCalendario.Designer.cs">
+      <DependentUpon>201901071645506_EventosCategoriaCalendario.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AgendaCulturalSchema.cs" />
     <Compile Include="Models\ClasesSP\ArtistasDeEvento.cs" />
     <Compile Include="Models\ClasesSP\DetallarEvento.cs" />
     <Compile Include="Models\ClasesSP\EventosDeArtista.cs" />
+    <Compile Include="Models\ClasesSP\EventosEnCalendario.cs" />
+    <Compile Include="Models\ClasesSP\EventosPorCategoria.cs" />
     <Compile Include="Models\ClasesSP\ListaArtistasTOP.cs" />
     <Compile Include="Models\ClasesSP\ListarEventos.cs" />
     <Compile Include="Models\ClasesSP\ModeloPaginacion.cs" />
@@ -237,6 +243,7 @@
     </Compile>
     <Compile Include="Startup.cs" />
     <Compile Include="ViewModels\ArtistaEventoViewModel.cs" />
+    <Compile Include="ViewModels\EventoCategoriaViewModel.cs" />
     <Compile Include="ViewModels\EventoPorArtistasViewModel.cs" />
     <Compile Include="ViewModels\IndexEventoViewModel.cs" />
   </ItemGroup>
@@ -327,6 +334,8 @@
     <Content Include="Migrations\QueriesSQL\Detalles_sp_Detalles_Eventos.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_ArtistasTop.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Artistas_Evento.sql" />
+    <Content Include="Migrations\QueriesSQL\Listar_sp_Eventos_Calendario.sql" />
+    <Content Include="Migrations\QueriesSQL\Listar_sp_Eventos_Categoria.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Eventos_de_Artista.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Index_Eventos.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Organizadores_Evento.sql" />
@@ -458,6 +467,7 @@
     <Content Include="Views\Participante\Details.cshtml" />
     <Content Include="Views\Participante\Edit.cshtml" />
     <Content Include="Views\Participante\Index.cshtml" />
+    <Content Include="Views\Evento\EventosCategoria.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -481,6 +491,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201901030135439_StoreProcedures2.resx">
       <DependentUpon>201901030135439_StoreProcedures2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201901071645506_EventosCategoriaCalendario.resx">
+      <DependentUpon>201901071645506_EventosCategoriaCalendario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="RecursosSQL.resx">
       <Generator>ResXFileCodeGenerator</Generator>

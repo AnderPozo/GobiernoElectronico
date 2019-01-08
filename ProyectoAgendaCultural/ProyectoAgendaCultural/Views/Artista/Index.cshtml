@@ -7,13 +7,22 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <br />
 <br />
-<h2>Index</h2>
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<br />
 <h1>Conoce a nuestros artistas</h1>
 <br />
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Administrador"))
+    {
+        <p>
+            @Html.ActionLink("Crear nuevo artista", "Create")
+        </p>
+    }
+    else
+    {
+        <br />
+    }
+}
+
 <div class="row">
     @foreach (var item in Model)
     {

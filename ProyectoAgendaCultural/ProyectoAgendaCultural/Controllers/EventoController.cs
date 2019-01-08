@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using ProyectoAgendaCultural.Models;
 using ProyectoAgendaCultural.Models.ClasesSP;
 using ProyectoAgendaCultural.ViewModels;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 
 namespace ProyectoAgendaCultural.Controllers
@@ -22,6 +24,7 @@ namespace ProyectoAgendaCultural.Controllers
         private DetallarEvento de = new DetallarEvento();
         private ArtistasDeEvento artEven = new ArtistasDeEvento();
         private OrganizadoresDeEvento orgEven = new OrganizadoresDeEvento();
+        private EventosPorCategoria evCat = new EventosPorCategoria();
         
 
 
@@ -35,6 +38,23 @@ namespace ProyectoAgendaCultural.Controllers
         //Vista Principal Index Eventos
         public ActionResult IndexEventos()
         {
+            if (User.Identity.IsAuthenticated)
+            {
+                var idUsuarioActual = User.Identity.GetUserId();
+                var roleManager = new RoleManager<IdentityRole>
+                    (new RoleStore<IdentityRole>(db));
+
+                var userManager = new UserManager<ApplicationUser>
+                    (new UserStore<ApplicationUser>(db));
+
+                var usuarioEnRol = userManager.IsInRole(idUsuarioActual, "Administrador");
+
+                if (usuarioEnRol == false)
+                {
+                    userManager.AddToRole(idUsuarioActual, "Invitado");
+                }
+            }
+
             var even = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventosIndex").ToList();
             return View(even);
         }
@@ -59,6 +79,15 @@ namespace ProyectoAgendaCultural.Controllers
 
             return View(modelo);
         }
+
+        //Eventos por categoria
+        public ActionResult EventosCategoria(int? id)
+        {
+            var evCat = db.Database.SqlQuery<EventosPorCategoria>("AgendaCulturalDB.sp_EventosCategoria @Id_categoria",
+                new SqlParameter("@Id_categoria", id)).ToList();
+            return View(evCat);
+        }
+
 
         //Detallar evento
         public ActionResult Detalles(int? id)

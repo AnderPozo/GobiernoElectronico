@@ -78,12 +78,16 @@
                                 <p style="font-weight:bold">Hora de finalización del evento (*)</p>
                                 @Html.EditorFor(model => model.Hora_final, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.Hora_final, "", new { @class = "text-danger" })
+                                <br />
+                                <hr />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-offset-3 col-md-9">
-                                <input type="submit" value="Guardar y continuar" class="btn btn-lg btn-success" />
+                            <div class="col-md-10">
+                                <input type="submit" value="Guardar y crear nuevo registro" class="btn btn-default" />
+                                <input type="submit" value="Guardar y continuar" class="btn btn-success" />
+                                <a href="/EventoOrganizador/Create" s class="btn btn-default">Continuar sin guardar</a>
                             </div>
                         </div>
                     </div>

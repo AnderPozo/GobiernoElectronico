@@ -1,78 +1,88 @@
 ﻿@model ProyectoAgendaCultural.ViewModels.IndexEventoViewModel
+@using Microsoft.AspNet.Identity;
 
 @{
     ViewBag.Title = "ListaEventos";
 }
 <br />
 <br />
-<h2>ListaEventos</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<div class="container">
-    <div class="main">
-
-        <div class="container">
-            <h1>MONTUFAR CULTURAL</h1>
-
-            <hr>
-
-            <h2>EVENTOS AGREGADOS RECIENTEMENTE</h2>
-            <p>Bienvenido a la página oficial de eventos culturales del cantón Montufar</p>
-        </div>
+<h2>Lista de eventos</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Administrador"))
+    {
+        <p>
+            @Html.ActionLink("Crear nuevo evento", "Create")
+        </p>
+    }
+    else
+    {
         <br />
-        @if (Model.SPEventoes.Count() == 0)
-        {
-            <br />
-            <br />
-            <br />
-            <br />
-            <div class="contenedor_botonEv">
-                <img src="~/Resources/imag_barra/Informacion.png" height="100" width="100" />
-                <h2>NO HAY EVENTOS QUE MOSTRAR</h2>
-            </div>
-            <br />
-            <br />
-            <br />
-            <br />
-        }
-        else
-        {
+    }
+}
+        <div class="container">
+            <div class="main">
 
-            <div class="fila">
-                @foreach (var item in Model.SPEventoes)
+                <div class="container">
+                    <h1>MONTUFAR CULTURAL</h1>
+
+                    <hr>
+
+                    <h2>EVENTOS AGREGADOS RECIENTEMENTE</h2>
+                    <p>Bienvenido a la página oficial de eventos culturales del cantón Montufar</p>
+                </div>
+                <br />
+                @if (Model.SPEventoes.Count() == 0)
+                {
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <div class="contenedor_botonEv">
+                        <img src="~/Resources/imag_barra/Informacion.png" height="100" width="100" />
+                        <h2>NO HAY EVENTOS QUE MOSTRAR</h2>
+                    </div>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                }
+                else
                 {
 
-                    <div class="columna_galeria">
-                        <div class="content">
-                            <img src="~/Resources/ImagenesEventos/@item.Imagen" alt="@item.Nombre_evento" style="width:100%">
-                            <div class="container_texto">
-                                <a href="/Evento/Detalles/@item.Id_evento"><h3>@item.Nombre_evento</h3></a>
-                            </div>
-                            <p>
-                                <b>Fecha: </b> @Html.DisplayFor(modelItem => item.Fecha_evento)
-                            </p>
-                            <p>
-                                <b>Categoría: </b>@item.Categoria
-                            </p>
+                    <div class="fila">
+                        @foreach (var item in Model.SPEventoes)
+                        {
 
-                            <div class="overlay">
-                                <div class="texto_overlay">
-                                    <a href="/Evento/Detalles/@item.Id_evento" style="color:white">
-                                        <h3>@item.Nombre_evento</h3>
-                                        <h4>@Html.DisplayFor(modelItem => item.Fecha_evento)</h4>
-                                    </a>
+                            <div class="columna_galeria">
+                                <div class="content">
+                                    <img src="~/Resources/ImagenesEventos/@item.Imagen" alt="@item.Nombre_evento" style="width:100%">
+                                    <div class="container_texto">
+                                        <a href="/Evento/Detalles/@item.Id_evento"><h3>@item.Nombre_evento</h3></a>
+                                    </div>
+                                    <p>
+                                        <b>Fecha: </b> @Html.DisplayFor(modelItem => item.Fecha_evento)
+                                    </p>
+                                    <p>
+                                        <b>Categoría: </b>@item.Categoria
+                                    </p>
+
+                                    <div class="overlay">
+                                        <div class="texto_overlay">
+                                            <a href="/Evento/Detalles/@item.Id_evento" style="color:white">
+                                                <h3>@item.Nombre_evento</h3>
+                                                <h4>@Html.DisplayFor(modelItem => item.Fecha_evento)</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+
                                 </div>
                             </div>
-
-                        </div>
+                        }
                     </div>
                 }
             </div>
-        }
-    </div>
-</div>
-<br />
-<br />
-@{Html.RenderPartial("_paginador", Model);}
+        </div>
+        <br />
+        <br />
+        @{Html.RenderPartial("_paginador", Model);}

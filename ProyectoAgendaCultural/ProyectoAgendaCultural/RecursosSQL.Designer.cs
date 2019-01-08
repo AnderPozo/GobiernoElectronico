@@ -88,7 +88,7 @@ namespace ProyectoAgendaCultural {
         ///@Id_evento [int] 
         ///AS 
         ///	SET NOCOUNT ON;
-        ///	SELECT ev.Id as Id_evento,art.Nombres,art.Apellidos,art.Imagen,art.Disciplina
+        ///	SELECT ev.Id as Id_evento,art.Id as Id_Artista,art.Nombres,art.Apellidos,art.Imagen,art.Disciplina
         ///	FROM AgendaCulturalDB.Evento ev
         ///	INNER JOIN AgendaCulturalDB.Presentacion pres
         ///	ON pres.EventoId=ev.Id
@@ -117,6 +117,49 @@ namespace ProyectoAgendaCultural {
         internal static string Listar_sp_ArtistasTop {
             get {
                 return ResourceManager.GetString("Listar_sp_ArtistasTop", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a USE AgendaCulturalDB;  
+        ///GO  
+        ///CREATE PROCEDURE [AgendaCulturalDB].[sp_EventosCalendario] 
+        ///AS   
+        ///
+        ///    SET NOCOUNT ON;
+        ///	SELECT ev.Id as Id_evento,ev.Nombre,ev.Descripcion,cl.Fecha,cl.Hora_inicio,cl.Hora_final 
+        ///	FROM AgendaCulturalDB.Evento ev
+        ///	INNER JOIN AgendaCulturalDB.Calendario cl
+        ///	ON cl.EventoId=ev.Id;
+        ///GO.
+        /// </summary>
+        internal static string Listar_sp_Eventos_Calendario {
+            get {
+                return ResourceManager.GetString("Listar_sp_Eventos_Calendario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a USE AgendaCulturalDB;  
+        ///GO  
+        ///CREATE PROCEDURE [AgendaCulturalDB].[sp_EventosCategoria]
+        ///@Id_categoria [int] 
+        ///AS
+        ///	SET NOCOUNT ON;
+        ///	SELECT ct.Id as Id_categoria,ev.Id as Id_evento,ev.Imagen,ev.Nombre as Nombre_evento,
+        ///	ct.Nombre as Categoria,cl.Fecha as Fecha_evento
+        ///    FROM AgendaCulturalDB.Evento ev
+        ///	INNER JOIN AgendaCulturalDB.Categoria ct
+        ///	ON ct.Id=ev.CategoriaId
+        ///	INNER JOIN AgendaCulturalDB.Calendario cl
+        ///	ON cl.EventoId=ev.Id
+        ///	WHERE ct.Id=@Id_categoria 
+        ///	ORDER BY ev.Id DESC;
+        ///GO  .
+        /// </summary>
+        internal static string Listar_sp_Eventos_Categoria {
+            get {
+                return ResourceManager.GetString("Listar_sp_Eventos_Categoria", resourceCulture);
             }
         }
         
@@ -234,6 +277,24 @@ namespace ProyectoAgendaCultural {
         internal static string sp_EventosArtista {
             get {
                 return ResourceManager.GetString("sp_EventosArtista", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a [AgendaCulturalDB].[sp_EventosCalendario].
+        /// </summary>
+        internal static string sp_EventosCalendario {
+            get {
+                return ResourceManager.GetString("sp_EventosCalendario", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Busca una cadena traducida similar a [AgendaCulturalDB].[sp_EventosCategoria].
+        /// </summary>
+        internal static string sp_EventosCategoria {
+            get {
+                return ResourceManager.GetString("sp_EventosCategoria", resourceCulture);
             }
         }
         

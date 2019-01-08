@@ -1,7 +1,9 @@
 ﻿@model ProyectoAgendaCultural.Models.Evento
 
 @{
-    ViewBag.Title = "Create";
+                /**/
+
+                ViewBag.Title = "Create";
 }
 <link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
 <br />
@@ -50,7 +52,7 @@
                                               data-val="true"
                                               class="form-control">
                                     </textarea>
-                                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })     
+                                    @Html.ValidationMessageFor(model => model.Descripcion, "", new { @class = "text-danger" })
                                 </div>
                             </div>
                             <div class="form-group">
@@ -62,7 +64,7 @@
                                     <p style="font-weight:bold">Selecciona si el evento es gratuito o proporciona información adicional de pago</p>
                                 </div>
                             </div>
-                            <div class="form-group">  
+                            <div class="form-group">
                                 @Html.LabelFor(model => model.Informacion_pago, htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-md-10">
                                     <div class="checkbox">
@@ -74,7 +76,7 @@
                             </div>
 
                             <div class="form-group">
-                                
+
                                 <div class="col-md-10">
                                     <hr />
                                     <p style="font-weight:bold">Incluya toda la información relevante como costos de ingreso al evento.Ingrese "GRATIS" si el evento es abierto al público</p>
@@ -134,8 +136,10 @@
                             </div>
 
                             <div class="form-group">
-                                <div class="col-md-offset-3 col-md-9">
-                                    <input type="submit" value="Guardar y continuar" class="btn btn-lg btn-success" />
+                                <div class="col-md-10">
+                                    <input type="submit" value="Guardar y crear nuevo evento" class="btn btn-default" />
+                                    <input type="submit" value="Guardar y continuar" class="btn btn-success" />
+                                    <a href="/Calendario/Create" s class="btn btn-default">Continuar sin guardar</a>
                                 </div>
                             </div>
                         </div>
@@ -145,4 +149,4 @@
         </div>
     </div>
 </div>
-                    <script src="~/Scripts/visualizar_imagen.js"></script>
+<script src="~/Scripts/visualizar_imagen.js"></script>
