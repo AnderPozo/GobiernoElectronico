@@ -40,7 +40,7 @@ namespace ProyectoAgendaCultural.Controllers
         public ActionResult Create()
         {
             ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre");
-            ViewBag.ParticipanteId = new SelectList(db.ParticipanteDb, "Id", "Cedula");
+            ViewBag.ParticipanteId = new SelectList(db.ParticipanteDb, "Id", "NombreCompleto");
             return View();
         }
 
@@ -76,7 +76,7 @@ namespace ProyectoAgendaCultural.Controllers
                 return HttpNotFound();
             }
             ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", asistencia.EventoId);
-            ViewBag.ParticipanteId = new SelectList(db.ParticipanteDb, "Id", "Cedula", asistencia.ParticipanteId);
+            ViewBag.ParticipanteId = new SelectList(db.ParticipanteDb, "Id", "NombreCompleto", asistencia.ParticipanteId);
             return View(asistencia);
         }
 
@@ -94,7 +94,7 @@ namespace ProyectoAgendaCultural.Controllers
                 return RedirectToAction("Index");
             }
             ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", asistencia.EventoId);
-            ViewBag.ParticipanteId = new SelectList(db.ParticipanteDb, "Id", "Cedula", asistencia.ParticipanteId);
+            ViewBag.ParticipanteId = new SelectList(db.ParticipanteDb, "Id", "NombreCompleto", asistencia.ParticipanteId);
             return View(asistencia);
         }
 

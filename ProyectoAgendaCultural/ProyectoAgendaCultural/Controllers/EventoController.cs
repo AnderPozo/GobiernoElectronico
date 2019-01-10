@@ -29,7 +29,7 @@ namespace ProyectoAgendaCultural.Controllers
 
 
         // GET: Evento
-        public ActionResult Index()
+        public ActionResult AdminEventos()
         {
             var eventoDb = db.EventoDb.Include(e => e.Categoria).Include(e => e.Lugar);
             return View(eventoDb.ToList());
@@ -62,7 +62,7 @@ namespace ProyectoAgendaCultural.Controllers
         //Lista todos los eventos
         public ActionResult ListaEventos(int pagina=1)
         {
-            var cantRegistrosPagina = 2;
+            var cantRegistrosPagina = 12;
 
             var ev = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos")
                 .Skip((pagina - 1) * cantRegistrosPagina)

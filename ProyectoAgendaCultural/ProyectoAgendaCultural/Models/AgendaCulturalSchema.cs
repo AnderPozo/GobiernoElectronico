@@ -344,6 +344,11 @@ namespace ProyectoAgendaCultural.Models
         [StringLength(50)]
         public string Email { get; set; }
 
+        public string NombreCompleto
+        {
+            get { return string.Format("{0} {1}", this.Nombres, this.Apellidos); }
+        }
+
         public virtual ICollection<Asistencia> Asistencias { get; set; }
     }
 

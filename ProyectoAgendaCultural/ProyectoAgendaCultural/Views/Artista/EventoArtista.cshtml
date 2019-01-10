@@ -6,17 +6,26 @@
 }
 <br />
 <br />
-<h2>EventoArtista</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
+<h2>Detalles de artista</h2>
+@if (User.Identity.IsAuthenticated)
+{
+    if (User.IsInRole("Administrador"))
+    {
+        <p>
+            @Html.ActionLink("Crear nuevo artista", "Create")
+        </p>
+    }
+    else
+    {
+        <br/>
+    }
+}
 
 <div class="container">
     <div class="row">
         <div class="col-sm-4">
             @{Html.RenderPartial("_eventosArtista", Model.Artistas);}
-            @{Html.RenderPartial("_topArtistas",Model.ListaArtistasTOPs);}
+            @{Html.RenderPartial("_topArtistas", Model.ListaArtistasTOPs);}
         </div>
 
         <div class="col-sm-8">
@@ -24,7 +33,7 @@
             @foreach (var item in Model.EventosDeArtistas)
             {
                 <div class="row">
-                    <h2>@item.Nombre_evento</h2>
+                    <a href="/Evento/Detalles/@item.Id_evento" style="color:black"><h2>@item.Nombre_evento</h2></a>
                     <h5>Fecha: @Html.DisplayFor(modelItem => item.Fecha_evento)</h5>
                     <div class="pull-right">
                         <img class="pull-right" src="~/Resources/ImagenesEventos/@item.Imagen" width="300" height="300">
@@ -43,4 +52,4 @@
 
     </div>
 
-    </div>
+</div>

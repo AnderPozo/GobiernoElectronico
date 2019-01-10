@@ -1,0 +1,41 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "PanelControl";
+}
+
+<link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--Menu de administrador-->
+            @{Html.RenderPartial("_menuVertical");}
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+        <div class="col-sm-9">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    <h2 style="color:black">Panel de control (Bienvenido @User.Identity.GetUserName() )</h2>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Desde aquí puede manejar su perfil individual de artista, el perfil de su organización cultural o de su lugar o espacio cultural, y subir eventos para su publicación.
+                    </p>
+                    <p>
+                        Si esta es la primera vez que está subiendo un evento para su publicación, debe primero crear un perfil de su organización y del lugar o espacio cultural donde se desarrollara el evento. Si usted es un artista le recomendamos crear primero su perfil de artista. Por favor lea las instrucciones en cada sección. Gracias por compartir.
+                    </p>
+                    <br />
+
+                    <div class="contenedor_botonEv">
+                        <a class="botonEv listar" href="/Evento/Create">Publicar evento</a>
+                    </div>
+                    <br />
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>

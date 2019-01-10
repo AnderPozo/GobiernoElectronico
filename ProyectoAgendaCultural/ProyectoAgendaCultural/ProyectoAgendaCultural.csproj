@@ -195,6 +195,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdministradorController.cs" />
     <Compile Include="Controllers\ArtistaController.cs" />
     <Compile Include="Controllers\AsistenciaController.cs" />
     <Compile Include="Controllers\CalendarioController.cs" />
@@ -468,6 +469,8 @@
     <Content Include="Views\Participante\Edit.cshtml" />
     <Content Include="Views\Participante\Index.cshtml" />
     <Content Include="Views\Evento\EventosCategoria.cshtml" />
+    <Content Include="Views\Administrador\PanelControl.cshtml" />
+    <Content Include="Views\Evento\AdminEventos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

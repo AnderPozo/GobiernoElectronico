@@ -3,11 +3,11 @@
 @{
     ViewBag.Title = "Details";
 }
-
-<h2>Details</h2>
+<br />
+<br />
+<h2>Detalles de lugar</h2>
 
 <div>
-    <h4>Lugar</h4>
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -39,7 +39,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Imagen)
+            <img src="~/Resources/ImagenesLugares/@Model.Imagen" width="500" height="350" />
         </dd>
 
         <dt>
