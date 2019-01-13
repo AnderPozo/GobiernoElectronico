@@ -246,6 +246,7 @@
     <Compile Include="ViewModels\ArtistaEventoViewModel.cs" />
     <Compile Include="ViewModels\EventoCategoriaViewModel.cs" />
     <Compile Include="ViewModels\EventoPorArtistasViewModel.cs" />
+    <Compile Include="ViewModels\IndexArtistaViewModel.cs" />
     <Compile Include="ViewModels\IndexEventoViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -259,6 +260,7 @@
     <Content Include="Content\Estilo_footer.css" />
     <Content Include="Content\estilo_galeria.css" />
     <Content Include="Content\estilo_menuVertical.css" />
+    <Content Include="Content\fullcalendar.min.css" />
     <Content Include="Content\mis_estilos.css" />
     <Content Include="css\bootstrap.css" />
     <Content Include="css\font-awesome.css" />
@@ -342,20 +344,30 @@
     <Content Include="Migrations\QueriesSQL\Listar_sp_Organizadores_Evento.sql" />
     <Content Include="Migrations\QueriesSQL\Listar_sp_Todos_Eventos.sql" />
     <Content Include="Resources\imag_barra\favicon.png" />
+    <Content Include="Resources\imag_barra\gad-footer.jpg" />
     <Content Include="Resources\imag_barra\img_fondo.jpg" />
     <Content Include="Resources\imag_barra\Informacion.png" />
     <Content Include="Resources\imag_barra\logo2.png" />
+    <Content Include="Resources\imag_slider\cantinflas.jpg" />
+    <Content Include="Resources\imag_slider\mascara.jpg" />
+    <Content Include="Resources\imag_slider\ormaza.jpg" />
+    <Content Include="Resources\imag_slider\pintura.jpg" />
+    <Content Include="Resources\imag_slider\SP_banda.jpg" />
+    <Content Include="Resources\imag_slider\teatro2.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\fullcalendar.min.js" />
+    <Content Include="Scripts\idiomaCalendares.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jqueryCalendar.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -363,6 +375,7 @@
     <Content Include="Scripts\localizacionLugar.js" />
     <Content Include="Scripts\MainMapa.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\moment.min.js" />
     <Content Include="Scripts\visualizar_imagen.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
@@ -471,6 +484,8 @@
     <Content Include="Views\Evento\EventosCategoria.cshtml" />
     <Content Include="Views\Administrador\PanelControl.cshtml" />
     <Content Include="Views\Evento\AdminEventos.cshtml" />
+    <Content Include="Views\Administrador\Publicar_evento.cshtml" />
+    <Content Include="Views\Calendario\EventosCalendario.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

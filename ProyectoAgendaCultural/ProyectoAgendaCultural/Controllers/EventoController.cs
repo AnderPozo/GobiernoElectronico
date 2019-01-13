@@ -157,7 +157,7 @@ namespace ProyectoAgendaCultural.Controllers
 
                 db.EventoDb.Add(evento);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","Calendario");
             }
 
             ViewBag.CategoriaId = new SelectList(db.CategoriaDb, "Id", "Nombre", evento.CategoriaId);

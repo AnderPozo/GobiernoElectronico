@@ -1,0 +1,54 @@
+﻿@using Microsoft.AspNet.Identity;
+@{
+    ViewBag.Title = "Publicar_evento";
+}
+
+<link href="~/Content/estilo_menuVertical.css" rel="stylesheet" />
+<br />
+<br />
+<br />
+<br />
+<div class="container">
+    <div class="row">
+        <div class="col-sm-3">
+            <!--Menu de administrador-->
+            @{Html.RenderPartial("_menuVertical");}
+            <hr class="hidden-sm hidden-md hidden-lg">
+        </div>
+        <div class="col-sm-9">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    <h2 style="color:black">Pasos para publicar un evento</h2>
+                </div>
+                <div class="panel-body">
+                    <p>
+                        Desde esta página puede comenzar con la publicación de un nuevo evento, antes de la publicación de un evento se debe
+                         realizar ciertas acciones que se detallan a continuación:
+                    </p>
+                    <p>
+                        <b>1)</b> Registrar los organizadores del evento. <br />
+                        <b>2)</b> Registrar el lugar en el cual se va a realizar el evento, en el formulario de ingreso de lugar
+                        le va a pedir una dirección, si la dirección del lugar no se encuentra en la base de datos debe crear una nueva dirección. <br />
+                        <b>3)</b> Registrar los artistas que van a presentarse en el evento. <br /><br />
+
+                        <h3><b>Publicación del evento</b></h3><br />
+                        Para la publicación de un nuevo vento hay que seguir una serie de pasos: <br />
+                        <b>1)</b> Detallar la información del evento. <br />
+                        <b>2)</b> Asignar fecha y horas del evento. <br />
+                        <b>3)</b> Asignar los organizadores del evento. <br />
+                        <b>4)</b> Asignar los artistas que se van a presentar al evento. <br />
+                        <br />
+                        Al concluir esta serie de pasos puede ver el evento publicado en la página principal dando clic en la pestaña de INICIO
+                    </p>
+                    <br />
+
+                    <div class="contenedor_botonEv">
+                        <a class="botonEv listar" href="/Evento/Create">Comenzar publicación</a>
+                    </div>
+                    <br />
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

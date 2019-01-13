@@ -1,4 +1,4 @@
-﻿@model IEnumerable<ProyectoAgendaCultural.Models.Artista>
+﻿@model ProyectoAgendaCultural.ViewModels.IndexArtistaViewModel
 
 @{
     ViewBag.Title = "Index";
@@ -24,7 +24,7 @@
 }
 
 <div class="row">
-    @foreach (var item in Model)
+    @foreach (var item in Model.Artistas)
     {
         <div class="columnaArt">
             <div class="card">
@@ -42,3 +42,6 @@
         </div>
     }
 </div>
+<br />
+<br />
+@{Html.RenderPartial("_paginador", Model);}

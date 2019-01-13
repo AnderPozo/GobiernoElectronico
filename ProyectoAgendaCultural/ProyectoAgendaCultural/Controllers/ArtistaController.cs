@@ -21,10 +21,39 @@ namespace ProyectoAgendaCultural.Controllers
         private ListaArtistasTOP artistaT = new ListaArtistasTOP();
 
         // GET: Artista
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
-            var artistaDb = db.ArtistaDb.Include(a => a.Direccion);
-            return View(artistaDb.ToList());
+            /*
+             var cantRegistrosPagina = 12;
+
+            var ev = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos")
+                .Skip((pagina - 1) * cantRegistrosPagina)
+                .Take(cantRegistrosPagina).ToList();
+            var totalDeRegistros = db.Database
+                .SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos").Count();
+
+            var modelo = new IndexEventoViewModel();
+            modelo.SPEventoes = ev;
+            modelo.PaginaActual = pagina;
+            modelo.TotalRegistros = totalDeRegistros;
+            modelo.RegistrosPorPagina = cantRegistrosPagina;
+
+
+            return View(modelo);
+             */
+            var cantRegistrosPagina = 12;
+            var artistaDb = db.ArtistaDb.Include(a => a.Direccion).OrderBy(x => x.Id)
+                .Skip((pagina -1 ) * cantRegistrosPagina)
+                .Take(cantRegistrosPagina).ToList();
+
+            var totalDeRegistros = db.ArtistaDb.Count();
+            var modelo = new IndexArtistaViewModel();
+            modelo.Artistas = artistaDb;
+            modelo.PaginaActual = pagina;
+            modelo.TotalRegistros = totalDeRegistros;
+            modelo.RegistrosPorPagina = cantRegistrosPagina;
+
+            return View(modelo);
         }
 
         public ActionResult EventoArtista(int? id)

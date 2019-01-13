@@ -13,5 +13,11 @@ namespace ProyectoAgendaCultural.Controllers
         {
             return View();
         }
+
+
+        public ActionResult Publicar_evento()
+        {
+            return View();
+        }
     }
 }

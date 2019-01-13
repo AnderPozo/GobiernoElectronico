@@ -25,6 +25,16 @@ namespace ProyectoAgendaCultural
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            //CSS Fullcalendar
+            bundles.Add(new ScriptBundle("~/Content/fullCalendarcss").Include(
+                    "~/Content/fullcalendar.min.css"));
+
+            // JS FullCalendar
+            bundles.Add(new ScriptBundle("~/bundles/fullCalendarjs").Include(
+                    "~/Scripts/moment.min.js",
+                    "~/Scripts/fullcalendar.min.js",
+                    "~/Scripts/idiomaCalendares.js"));
         }
     }
 }

@@ -51,14 +51,28 @@
                                     <b>Categoría: </b>@item.Categoria
                                 </p>
 
-                                <div class="overlay">
-                                    <div class="texto_overlay">
-                                        <a href="/Evento/Detalles/@item.Id_evento" style="color:white">
-                                            <h3>@item.Nombre_evento</h3>
-                                            <h4>@Html.DisplayFor(modelItem => item.Fecha_evento)</h4>
-                                        </a>
+                                @if (item.Fecha_evento < DateTime.Now.Date)
+                                {
+                                    <div class="overlay" style="background-color:red;">
+                                        <div class="texto_overlay">
+                                            <a href="/Evento/Detalles/@item.Id_evento" style="color:white">
+                                                <h3 style="color:white ">@item.Nombre_evento</h3>
+                                                <h4 style="color:white ">Evento caducado</h4>
+                                            </a>
+                                        </div>
                                     </div>
-                                </div>
+                                }
+                                else
+                                {
+                                    <div class="overlay">
+                                        <div class="texto_overlay">
+                                            <a href="/Evento/Detalles/@item.Id_evento" style="color:white">
+                                                <h3>@item.Nombre_evento</h3>
+                                                <h4>@Html.DisplayFor(modelItem => item.Fecha_evento)</h4>
+                                            </a>
+                                        </div>
+                                    </div>
+                                }
 
                             </div>
                         </div>

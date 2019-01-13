@@ -66,9 +66,12 @@ h1 {
     background-color: #00b5e4;
 }
 
+
 .content:hover .overlay {
     opacity: 1;
 }
+
+
 
 .texto_overlay {
     color: white;
@@ -82,6 +85,7 @@ h1 {
     text-align: center;
     
 }
+
 
 .container_texto {
     width: 200px;

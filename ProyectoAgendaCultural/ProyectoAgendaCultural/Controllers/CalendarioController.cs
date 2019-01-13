@@ -7,18 +7,40 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ProyectoAgendaCultural.Models;
+using ProyectoAgendaCultural.Models.ClasesSP;
 
 namespace ProyectoAgendaCultural.Controllers
 {
     public class CalendarioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        private EventosEnCalendario evC = new EventosEnCalendario();
 
         // GET: Calendario
         public ActionResult Index()
         {
             var calendarioDb = db.CalendarioDb.Include(c => c.Evento);
             return View(calendarioDb.ToList());
+        }
+
+        //CalendarioEventos
+        public ActionResult EventosCalendario()
+        {
+            //var evCq = db.Database.SqlQuery<ListaArtistasTOP>("AgendaCulturalDB.sp_ListarArtistas").ToList();
+            //var evC = db.Database.SqlQuery<EventosEnCalendario>("AgendaCulturalDB.sp_EventosCalendario").ToList();
+            return View();
+        }
+
+        public ActionResult listaCalendario()
+        {
+            return Json(db.Database.SqlQuery<EventosEnCalendario>("AgendaCulturalDB.sp_EventosCalendario").
+                AsEnumerable().
+                Select(e => new {
+                    title=e.Nombre,
+                    descripcion=e.Descripcion,
+                    start=e.Fecha.ToString("MM/dd/yyyy")
+                }).
+                ToList(), JsonRequestBehavior.AllowGet);
         }
 
         // GET: Calendario/Details/5
@@ -54,7 +76,7 @@ namespace ProyectoAgendaCultural.Controllers
             {
                 db.CalendarioDb.Add(calendario);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create","EventoOrganizador");
             }
 
             ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", calendario.EventoId);

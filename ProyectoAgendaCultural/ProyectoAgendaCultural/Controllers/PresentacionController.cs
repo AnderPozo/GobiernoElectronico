@@ -55,12 +55,29 @@ namespace ProyectoAgendaCultural.Controllers
             {
                 db.PresentacionDb.Add(presentacion);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Publicar_evento","Administrador");
             }
 
             ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "Cedula", presentacion.ArtistaId);
             ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", presentacion.EventoId);
             return View(presentacion);
+        }
+
+        //CREAR NUEVO REGISTRO
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult CrearNuevo([Bind(Include = "Id,ArtistaId,EventoId")] Presentacion presentacion)
+        {
+            if (ModelState.IsValid)
+            {
+                db.PresentacionDb.Add(presentacion);
+                db.SaveChanges();
+                return RedirectToAction("Create");
+            }
+
+            ViewBag.ArtistaId = new SelectList(db.ArtistaDb, "Id", "Cedula", presentacion.ArtistaId);
+            ViewBag.EventoId = new SelectList(db.EventoDb, "Id", "Nombre", presentacion.EventoId);
+            return View("Create");
         }
 
         // GET: Presentacion/Edit/5

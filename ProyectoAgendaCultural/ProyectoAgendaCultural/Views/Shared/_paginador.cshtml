@@ -26,7 +26,7 @@
 
 <div class="text-center">
     <ul class="pagination">
-        <li>@Html.ActionLink("Primera", null, new { pagina = 1 })</li>
+        <li>@Html.ActionLink("Inicio", null, new { pagina = 1 })</li>
         @for (int i = Inicial; i <= Final; i++)
         {
             if (i == Model.PaginaActual)
@@ -38,6 +38,6 @@
                 <li>@Html.ActionLink(i.ToString(), null, new { pagina = i })</li>
             }
         }
-        <li>@Html.ActionLink("Ultima", null, new { pagina = cantidadPaginas })</li>
+        <li>@Html.ActionLink("Final", null, new { pagina = cantidadPaginas })</li>
     </ul>
 </div>
