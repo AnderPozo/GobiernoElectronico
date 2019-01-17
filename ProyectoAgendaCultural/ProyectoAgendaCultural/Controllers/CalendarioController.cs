@@ -11,12 +11,14 @@ using ProyectoAgendaCultural.Models.ClasesSP;
 
 namespace ProyectoAgendaCultural.Controllers
 {
+    [Authorize(Roles = "Administrador")]
     public class CalendarioController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private EventosEnCalendario evC = new EventosEnCalendario();
 
         // GET: Calendario
+        
         public ActionResult Index()
         {
             var calendarioDb = db.CalendarioDb.Include(c => c.Evento);
@@ -24,13 +26,14 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         //CalendarioEventos
+        [AllowAnonymous]
         public ActionResult EventosCalendario()
         {
             //var evCq = db.Database.SqlQuery<ListaArtistasTOP>("AgendaCulturalDB.sp_ListarArtistas").ToList();
             //var evC = db.Database.SqlQuery<EventosEnCalendario>("AgendaCulturalDB.sp_EventosCalendario").ToList();
             return View();
         }
-
+        [AllowAnonymous]
         public ActionResult listaCalendario()
         {
             return Json(db.Database.SqlQuery<EventosEnCalendario>("AgendaCulturalDB.sp_EventosCalendario").

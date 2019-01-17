@@ -62,7 +62,7 @@ namespace ProyectoAgendaCultural.Controllers
         //Lista todos los eventos
         public ActionResult ListaEventos(int pagina=1)
         {
-            var cantRegistrosPagina = 12;
+            var cantRegistrosPagina = 8;
 
             var ev = db.Database.SqlQuery<SPEventos>("AgendaCulturalDB.sp_ListarEventos")
                 .Skip((pagina - 1) * cantRegistrosPagina)
@@ -140,6 +140,7 @@ namespace ProyectoAgendaCultural.Controllers
         // POST: Evento/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles ="Administrador")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,Informacion_pago,Informacion_adicional,Imagen,CategoriaId,LugarId")] Evento evento, HttpPostedFileBase file)

@@ -62,13 +62,9 @@
             @Html.DisplayNameFor(model => model.SitioWeb)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SitioWeb)
+        <dd>   
+            <a href="@Model.SitioWeb" target="_blank" >@Html.DisplayFor(model => model.SitioWeb)</a>
         </dd>
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
