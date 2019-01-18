@@ -30,7 +30,14 @@
                     <br />
 
                     <div class="contenedor_botonEv">
-                        <a class="botonEv listar" href="/Administrador/Publicar_evento">Publicar evento</a>
+                        @if (User.IsInRole("Administrador"))
+                        {
+                            <a class="botonEv listar" href="/Administrador/Publicar_evento">Publicar evento</a>
+                        }
+                        else
+                        {
+                            <a class="botonEv listar" href="/Asistencia/Create">Registrar participación</a>
+                        }
                     </div>
                     <br />
                 </div>

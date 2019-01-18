@@ -66,7 +66,7 @@
             <div class="clearfix" style="background-color: #00b5e4">
                 <h4 style="margin-left:15px"><b><span class="glyphicon glyphicon-map-marker"></span>   LUGAR</b></h4>
             </div>
-            <h5><b>Lugar del evento: </b><a href="/Lugar/Details/@Model.DetallarEventos.Id_lugar" style="color:black;" >@Model.DetallarEventos.Nombre_lugar</a></h5>
+            <h5><b>Lugar del evento: </b><a href="/Lugar/Details/@Model.DetallarEventos.Id_lugar" style="color:black;">@Model.DetallarEventos.Nombre_lugar</a></h5>
             <h5>@Model.DetallarEventos.Nombre_direccion , @Model.DetallarEventos.Nombre_ciudad , @Model.DetallarEventos.Nombre_provincia</h5>
             <br />
             <hr class="hidden-sm hidden-md hidden-lg">
@@ -81,7 +81,12 @@
             </script>
             <script src="~/Scripts/MainMapa.js"></script>
             <script src="~/Scripts/localizacionLugar.js"></script>
-
+            <br />
+            <br />
+                <div class="contenedor_botonEv">
+                    <a  class="botonEv listar" href="/Asistencia/Create">Participar</a>
+                </div>
+ 
         </div>
 
 

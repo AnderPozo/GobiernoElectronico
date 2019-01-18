@@ -10,6 +10,7 @@ using ProyectoAgendaCultural.Models;
 
 namespace ProyectoAgendaCultural.Controllers
 {
+    [Authorize(Roles ="Administrador,Invitado")]
     public class AsistenciaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();

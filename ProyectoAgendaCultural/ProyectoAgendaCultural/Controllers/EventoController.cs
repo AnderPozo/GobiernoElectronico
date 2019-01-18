@@ -29,6 +29,7 @@ namespace ProyectoAgendaCultural.Controllers
 
 
         // GET: Evento
+        [Authorize(Roles ="Administrador")]
         public ActionResult AdminEventos()
         {
             var eventoDb = db.EventoDb.Include(e => e.Categoria).Include(e => e.Lugar);
@@ -36,6 +37,7 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         //Vista Principal Index Eventos
+        [AllowAnonymous]
         public ActionResult IndexEventos()
         {
             if (User.Identity.IsAuthenticated)
@@ -60,6 +62,7 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         //Lista todos los eventos
+        [AllowAnonymous]
         public ActionResult ListaEventos(int pagina=1)
         {
             var cantRegistrosPagina = 8;
@@ -81,6 +84,7 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         //Eventos por categoria
+        [AllowAnonymous]
         public ActionResult EventosCategoria(int? id)
         {
             var evCat = db.Database.SqlQuery<EventosPorCategoria>("AgendaCulturalDB.sp_EventosCategoria @Id_categoria",
@@ -90,6 +94,7 @@ namespace ProyectoAgendaCultural.Controllers
 
 
         //Detallar evento
+        [AllowAnonymous]
         public ActionResult Detalles(int? id)
         {
 
@@ -130,6 +135,7 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         // GET: Evento/Create
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create()
         {
             ViewBag.CategoriaId = new SelectList(db.CategoriaDb, "Id", "Nombre");
@@ -140,9 +146,10 @@ namespace ProyectoAgendaCultural.Controllers
         // POST: Evento/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
-        [Authorize(Roles ="Administrador")]
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Create([Bind(Include = "Id,Nombre,Descripcion,Informacion_pago,Informacion_adicional,Imagen,CategoriaId,LugarId")] Evento evento, HttpPostedFileBase file)
         {
             if (ModelState.IsValid && file!=null)
@@ -167,6 +174,7 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         // GET: Evento/Edit/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -188,6 +196,7 @@ namespace ProyectoAgendaCultural.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult Edit([Bind(Include = "Id,Nombre,Descripcion,Informacion_pago,Informacion_adicional,Imagen,CategoriaId,LugarId")] Evento evento)
         {
             if (ModelState.IsValid)
@@ -202,6 +211,7 @@ namespace ProyectoAgendaCultural.Controllers
         }
 
         // GET: Evento/Delete/5
+        [Authorize(Roles = "Administrador")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -219,6 +229,7 @@ namespace ProyectoAgendaCultural.Controllers
         // POST: Evento/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrador")]
         public ActionResult DeleteConfirmed(int id)
         {
             Evento evento = db.EventoDb.Find(id);
